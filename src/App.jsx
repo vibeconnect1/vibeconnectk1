@@ -33,7 +33,6 @@ function App() {
     <>
       <Router>
         <Toaster />
-
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to="/login" />} />
@@ -61,7 +60,6 @@ function App() {
           <Route path="/tickets" element={<Ticket />} />
           {/* link will have id */}
           <Route path="tickets/details" element={<TicketDetails />} />
-          
         </Routes>
       </Router>
     </>

@@ -9,10 +9,18 @@ const Ticket = () => {
   const [record, setRecord] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchedRecord, setSearchedRecord] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("all");
+
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   const columns = [
     {
       name: "Action",
-      cell: (row) => <Link to={`/tickets/details`}>{row.action}</Link>,
+      // /tickets/details/${row.id} use this to navigate to the individual detail page
+      cell: (row) => (
+        <Link to={`/tickets/details/${row.id}`}>{row.action}</Link>
+      ),
       sortable: true,
     },
     {
@@ -141,38 +149,106 @@ const Ticket = () => {
       <div className="fixed left-0 top-0 h-full">
         <Navbar />
       </div>
-      <div className="ml-64 overflow-x-auto w-[70rem] h-screen flex flex-col">
-        <div className="flex my-10 justify-around">
-          <div className="border border-black p-4 px-6 w-36 flex flex-col items-center">
-            <p>Open Tickets</p>
-            <p className="text-center">0</p>
+      <div className="ml-64 mx-10 overflow-x-auto w-[72rem] h-screen flex flex-col">
+        <div className="flex my-10 justify-start gap-20 ">
+          <div className="shadow-xl rounded-full border-4 border-green-400 w-52 p-4 px-6 flex flex-col items-center">
+            <p className="font-semibold text-lg">Open Tickets</p>
+            <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="border border-black p-4 px-6 w-36 flex flex-col items-center">
-            <p>Close Tickets</p>
-            <p className="text-center">0</p>
+          <div className="shadow-xl rounded-full border-4 border-red-400 w-52 p-4 px-6 flex flex-col items-center">
+            <p className="font-semibold text-lg">Close Tickets</p>
+            <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="border border-black p-4 px-6 w-36 flex flex-col items-center">
-            <p>Request</p>
-            <p className="text-center">0</p>
+
+          <div className="shadow-xl rounded-full border-4 border-orange-400 w-52 p-4 px-6 flex flex-col items-center">
+            <p className="font-semibold text-lg">Request</p>
+            <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="border border-black p-4 px-6 w-36 flex flex-col items-center">
-            <p>Complaint</p>
-            <p className="text-center">0</p>
+          <div className="shadow-xl rounded-full border-4 border-blue-400 w-52 p-4 px-6 flex flex-col items-center">
+            <p className="font-semibold text-lg">Complaint</p>
+            <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="border border-black w-36 flex flex-col items-center p-4 px-6">
-            <p>Suggestion</p>
-            <p className="text-center">0</p>
+          <div className="shadow-xl rounded-full border-4 border-yellow-400 w-52 p-4 px-6 flex flex-col items-center">
+            <p className="font-semibold text-lg">Suggestion</p>
+            <p className="text-center font-semibold text-lg">0</p>
           </div>
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
-          <div className=" w-full flex gap-10 justify-end">
-            <h2
+          <div className=" w-full flex gap-10 justify-around">
+            <div className="flex items-center space-x-4 border border-gray-300 rounded-2xl px-3 p-2 w-full">
+              <input
+                type="radio"
+                id="all"
+                name="status"
+                value="all"
+                checked={selectedOption === "all"}
+                onChange={handleChange}
+                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
+              />
+              <label htmlFor="all " className="text-sm">
+                All
+              </label>
+
+              <input
+                type="radio"
+                id="open"
+                name="status"
+                value="open"
+                checked={selectedOption === "open"}
+                onChange={handleChange}
+                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
+              />
+              <label htmlFor="open" className="text-sm">
+                Open
+              </label>
+
+              <input
+                type="radio"
+                id="close"
+                name="status"
+                value="close"
+                checked={selectedOption === "close"}
+                onChange={handleChange}
+                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
+              />
+              <label htmlFor="close" className="text-sm">
+                Close
+              </label>
+
+              <input
+                type="radio"
+                id="inprogress"
+                name="status"
+                value="inprogress"
+                checked={selectedOption === "inprogress"}
+                onChange={handleChange}
+                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
+              />
+              <label htmlFor="inprogress" className="text-sm">
+                In Progress
+              </label>
+
+              <input
+                type="radio"
+                id="resolved"
+                name="status"
+                value="resolved"
+                checked={selectedOption === "resolved"}
+                onChange={handleChange}
+                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
+              />
+              <label htmlFor="resolved" className="text-sm">
+                Resolved
+              </label>
+            </div>
+            <Link
+              to={"/tickets/create-ticket"}
               className="border-2 font-semibold hover:bg-black hover:text-white duration-150 transition-all border-black p-2 rounded-md text-black cursor-pointer text-center flex items-center w-44 gap-2 justify-center"
               onClick={() => setShowCountry(!showCountry)}
             >
               <PiPlusCircle size={20} />
               Add
-            </h2>
+            </Link>
             <div className="flex gap-2">
               <input
                 type="text"

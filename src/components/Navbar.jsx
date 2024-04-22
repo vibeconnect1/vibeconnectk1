@@ -19,7 +19,7 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
           />
         </div>
-        <div className=" flex flex-col gap-4 relative ">
+        <div className=" flex flex-col gap-4 mb-5 relative ">
           {menus?.map((menu, i) => (
             <NavLink
               to={menu?.link}

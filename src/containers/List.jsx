@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
-const List = () => {
+const List = ({title, title2}) => {
 
   const columns = [
     {
@@ -32,11 +32,11 @@ const List = () => {
   const data = [
     {
       id: 1,
-      title: "Broadcast",
+      title: title,
     },
     {
       id: 2,
-      title: "Tickets",
+      title: title2,
     },
   ];
 

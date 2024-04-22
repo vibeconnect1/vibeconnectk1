@@ -1,3 +1,4 @@
+
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -28,6 +29,11 @@ import UserRole from "./pages/SubPages/UserRole.jsx";
 import { Toaster } from "react-hot-toast";
 import Ticket from "./pages/Ticket.jsx";
 import TicketDetails from "./pages/SubPages/details/Details.jsx";
+import Footer from "./components/Footer.jsx";
+import CreateTicket from "./pages/SubPages/CreateTicket.jsx";
+import Business from "./pages/Business.jsx";
+import BusinessDetails from "./pages/SubPages/details/BusinessDetails.jsx";
+import AddBusiness from "./pages/SubPages/AddBusiness.jsx";
 function App() {
   return (
     <>
@@ -58,9 +64,14 @@ function App() {
           <Route path="/setup/account/room" element={<Room />} />
           <Route path="/setup/User-role" element={<UserRole />} />
           <Route path="/tickets" element={<Ticket />} />
-          {/* link will have id */}
-          <Route path="tickets/details" element={<TicketDetails />} />
+          <Route path="/tickets/details/:id" element={<TicketDetails />} />
+          <Route path="/tickets/create-ticket" element={<CreateTicket />} />
+          <Route path="/business" element={<Business />} />
+          <Route path="/business/details/:id" element={<BusinessDetails />} />
+          <Route path="/business/add-business" element={<AddBusiness />} />
+
         </Routes>
+        <Footer/>
       </Router>
     </>
   );

@@ -1,48 +1,65 @@
-import React, { useState } from 'react'
-import List from '../../containers/List'
+import React, { useState } from "react";
+import List from "../../containers/List";
 
 const AccessRight = () => {
-    const [tab, setTab]= useState("all")
+  const [tab, setTab] = useState("all");
 
-    const handleAllTab = ()=>{
-        setTab('all')
-    }
-    const handleInvTab = ()=>{
-        setTab('inv')
-    }
-    const handlesetupTab = ()=>{
-        setTab('setup')
-    }
-    const handlesQuickgateTab = ()=>{
-        setTab('quick')
-    }
+  const handleAllTab = () => {
+    setTab("all");
+  };
+  const handleInvTab = () => {
+    setTab("inv");
+  };
+  const handlesetupTab = () => {
+    setTab("setup");
+  };
+  const handlesQuickgateTab = () => {
+    setTab("quick");
+  };
   return (
     <div>
       <div>
-        <ul className='flex justify-around border-b p-2'>
-            <li className='cursor-pointer' onClick={handleAllTab}>All Function</li>
-            <li className='cursor-pointer' onClick={handleInvTab}>Inventory</li>
-            <li className='cursor-pointer' onClick={handlesetupTab}>Setup</li>
-            <li className='cursor-pointer' onClick={handlesQuickgateTab}>Quickgate</li>
+        <ul className="flex justify-around border-b p-2">
+          <li
+            className={`${
+              tab === "all" && "bg-black text-white"
+            } p-2 rounded-full px-4 cursor-pointer`}
+            onClick={handleAllTab}
+          >
+            All Function
+          </li>
+          <li
+            className={`${
+              tab === "inv" && "bg-black text-white"
+            } p-2 rounded-full px-4 cursor-pointer`}
+            onClick={handleInvTab}
+          >
+            Inventory
+          </li>
+          <li
+            className={`${
+              tab === "setup" && "bg-black text-white"
+            } p-2 rounded-full px-4 cursor-pointer`}
+            onClick={handlesetupTab}
+          >
+            Setup
+          </li>
+          <li
+            className={`${
+              tab === "quick" && "bg-black text-white"
+            } p-2 rounded-full px-4 cursor-pointer`}
+            onClick={handlesQuickgateTab}
+          >
+            Quickgate
+          </li>
         </ul>
-        {/* <div className="mt-4">
-       <table className="border-collapse w-full ">
-        <thead>
-            <tr>
-                <th className='w-[20rem]'> </th>
-                <th>All</th>
-                <th>Add</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Disable</th>
-            </tr>
-        </thead>
-       </table>
-        </div> */}
-        <List/>
+        {tab === "all" && <List title="Broadcast" title2="Ticket" />}
+        {tab === "inv" && <List title="Master" title2="GRN" />}
+        {tab === "setup" && <List title="Account" title2="User Role" />}
+        {tab === "quick" && <List title="Visitor" title2="R Vehicle" />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AccessRight
+export default AccessRight;

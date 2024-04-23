@@ -1,4 +1,3 @@
-
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -37,8 +36,10 @@ import AddBusiness from "./pages/SubPages/AddBusiness.jsx";
 import BusinessSetup from "./pages/SubPages/BusinessSetup.jsx";
 import Materials from "./pages/Materials.jsx";
 import Booking from "./pages/Booking.jsx";
+import FacilityBooking from "./pages/SubPages/FacilityBooking.jsx";
+import BookingDetails from "./pages/SubPages/details/BookingDetails.jsx";
+import SetupFacility from "./pages/SubPages/SetupFacility.jsx";
 function App() {
-
   return (
     <>
       <Router>
@@ -78,12 +79,23 @@ function App() {
           <Route path="/business/add-business" element={<AddBusiness />} />
           <Route path="/business/setup-category" element={<BusinessSetup />} />
           {/* materials */}
-          <Route path="/materials" element={<Materials/>} />
+          <Route path="/materials" element={<Materials />} />
           {/* booking */}
-          <Route path="/bookings" element={<Booking/>} />
-
+          <Route path="/bookings" element={<Booking />} />
+          <Route
+            path="/bookings/new-facility-booking"
+            element={<FacilityBooking />}
+          />
+          <Route
+            path="/bookings/booking-details/:id"
+            element={<BookingDetails />}
+          />
+          <Route
+            path="/bookings/setup-facility"
+            element={<SetupFacility />}
+          />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </>
   );

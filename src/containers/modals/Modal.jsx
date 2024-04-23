@@ -18,11 +18,8 @@ const Modal = ({ onclose }) => {
   const handleExport = () => {
     const currentDate = new Date();
     const options = { timeZone: "Asia/Kolkata" };
-
     const ISTDate = currentDate.toLocaleString("en-IN", options);
-
     const formattedISTDate = ISTDate.replace(/[/:]/g, "_");
-
     const fileName = `attendance_${formattedISTDate}.xlsx`;
     const data = [
       ["Site", "User Type", "Department", "Month"],

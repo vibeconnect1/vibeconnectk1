@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import { ImEye } from "react-icons/im";
 
 const Ticket = () => {
-  const [record, setRecord] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchedRecord, setSearchedRecord] = useState([]);
+ 
   const [selectedOption, setSelectedOption] = useState("all");
 
   const handleChange = (event) => {
@@ -134,13 +132,17 @@ const Ticket = () => {
     },
   };
 
+  const [record, setRecord] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchedRecord, setSearchedRecord] = useState([]);
+
   const handleSearch = () => {
     const searchedValue = record.filter((row) => {
       console.log("Row ticket:", row.ticketNumber);
-      return row.ticketNumber.toLowerCase().includes(searchQuery.toLowerCase());
+      return row.ticketNumber.includes(searchQuery);
     });
     setSearchedRecord(searchedValue);
-    setRecord(searchedRecord);
+    setRecord(searchedValue);
     console.log(record);
   };
 
@@ -252,8 +254,8 @@ const Ticket = () => {
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder="Search using Ticket number or ticket title"
-                className="border border-gray-400 w-96 rounded-lg p-2"
+                placeholder="Search by Ticket number "
+                className="border border-gray-400 w-96 placeholder:text-sm rounded-lg p-2"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -270,7 +272,7 @@ const Ticket = () => {
               responsive
               selectableRows
               columns={columns}
-              data={record}
+              data={searchedRecord}
               customStyles={customStyle}
               pagination
             />

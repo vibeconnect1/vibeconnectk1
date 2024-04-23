@@ -3,12 +3,23 @@ import DataTable from "react-data-table-component";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Navbar from "../components/Navbar";
 import { ImEye } from "react-icons/im";
+import { BiExport } from "react-icons/bi";
+import ExportBookingModal from "../containers/modals/ExportBookingsModal";
+import { Link } from "react-router-dom";
+import SetupBookingFacility from "./SubPages/SetupBookingFacility";
 
 const Booking = () => {
   const [searchText, setSearchText] = useState("");
+  const [modal, showModal] = useState(false);
   const [page, setPage] = useState("booking");
   const column = [
-    { name: "Action", selector: (row) => row.action, sortable: true },
+    {
+      name: "Action",
+      cell: (row) => (
+        <Link to={`/bookings/booking-details/${row.id}`}>{row.action}</Link>
+      ),
+      sortable: true,
+    },
     { name: "ID", selector: (row) => row.id, sortable: true },
     {
       name: "Facility",
@@ -53,7 +64,7 @@ const Booking = () => {
     {
       id: 2,
       action: <ImEye />,
-      facility: "fac2",
+      facility: "Test2",
       bookedBy: "B",
       bookedOn: "booked date",
       facilityType: "bookable",
@@ -62,6 +73,8 @@ const Booking = () => {
       bookingStatus: "pending",
     },
   ];
+
+
   const [filteredData, setFilteredData] = useState(data);
   const handleSearch = (event) => {
     const searchValue = event.target.value;
@@ -101,7 +114,7 @@ const Booking = () => {
               } rounded-full px-2 cursor-pointer`}
               onClick={() => setPage("setup")}
             >
-              Setup
+              Setup Facility
             </h2>
           </div>
         </div>
@@ -116,12 +129,19 @@ const Booking = () => {
                 onChange={handleSearch}
               />
               <div className="flex gap-4 justify-end w-full">
-                <button
-                  to={"/business/add-business"}
+                <Link
+                  to={"/bookings/new-facility-booking"}
                   className="bg-black w-20 rounded-lg flex font-semibold items-center gap-2 text-white p-2 my-5"
                 >
                   <IoAddCircleOutline size={20} />
                   Add
+                </Link>
+                <button
+                  onClick={() => showModal(true)}
+                  className="bg-black rounded-lg flex font-semibold items-center gap-2 text-white p-2 my-5"
+                >
+                  <BiExport size={20} />
+                  Export
                 </button>
               </div>
             </div>
@@ -130,7 +150,11 @@ const Booking = () => {
               data={filteredData}
               customStyles={customStyle}
             />
+            {modal && <ExportBookingModal onclose={() => showModal(false)} />}
           </div>
+        )}
+         {page === "setup" && (
+          <SetupBookingFacility/>
         )}
       </div>
     </section>

@@ -93,7 +93,7 @@ const CreateTicket = () => {
             }`}
             onClick={() => setBehalf("occupant")}
           >
-            Occupant
+            Occupant User
           </li>
           <li
             className={`hover:bg-black hover:text-white cursor-pointer rounded-full px-5 py-2 ${

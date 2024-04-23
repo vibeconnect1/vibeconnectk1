@@ -87,7 +87,7 @@ const Materials = () => {
           />
           <div className="flex gap-4 justify-end w-full">
             <button
-              to={"/business/add-business"}
+              
               className="bg-black w-20 rounded-lg flex font-semibold items-center gap-2 text-white p-2 my-5"
               onClick={()=>showModal(true)}
             >

@@ -65,7 +65,7 @@ const Business = () => {
   };
 
   return (
-    <section className="flex gap-20 mr-5 max-w-screen">
+    <section className="flex gap-10 mr-5 max-w-screen ">
       <Navbar />
       <div className="flex w-full mx-10 my-10 flex-col">
         <div className="w-full flex mx-5 flex-col">
@@ -75,15 +75,18 @@ const Business = () => {
               placeholder="Search By Company Name"
               className="border-2 p-2 w-96 border-gray-300 rounded-lg"
             />
-            <div className="flex gap-4">
-              <Link to={"/business/add-business"} className="bg-black w-20 rounded-lg flex items-center gap-2 text-white p-2 my-5">
+            <div className="flex gap-4 justify-end w-full">
+              <Link
+                to={"/business/add-business"}
+                className="bg-black w-20 rounded-lg flex items-center gap-2 text-white p-2 my-5"
+              >
                 <IoAddCircleOutline />
                 Add
               </Link>
-              <button className="bg-black w-20 rounded-lg flex items-center gap-2 text-white p-2 my-5">
+              <Link to={"/business/setup-category"} className="bg-black rounded-lg w-40 flex items-center gap-2 text-white p-2 my-5">
                 <FiSettings />
-                Setup
-              </button>
+                Setup Category
+              </Link>
             </div>
           </div>
           <div>

@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar";
 import CustomTrigger from "../../containers/CustomTrigger";
 import Selector from "../../containers/Selector";
 import { useNavigate } from "react-router-dom";
+import FileInput from "../../Buttons/FileInput";
 
 const CreateTicket = () => {
   const navigate = useNavigate();
@@ -240,14 +241,8 @@ const CreateTicket = () => {
             className="border border-black rounded-md"
           />
         </div>
-        <div>
-          <input
-            type="file"
-            multiple
-            onChange={handleFileChange}
-            className="file:bg-black file:text-white file:rounded-full file:p-2 file:px-4 file:font-semibold bg-gray-300 p-2 rounded-full"
-          />
-        </div>
+        
+        <FileInput handleFileChange={handleFileChange}/>
         <div>
           {attachments.map((file, index) => (
             <div key={index}>

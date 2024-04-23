@@ -34,11 +34,16 @@ import CreateTicket from "./pages/SubPages/CreateTicket.jsx";
 import Business from "./pages/Business.jsx";
 import BusinessDetails from "./pages/SubPages/details/BusinessDetails.jsx";
 import AddBusiness from "./pages/SubPages/AddBusiness.jsx";
+import BusinessSetup from "./pages/SubPages/BusinessSetup.jsx";
+import Materials from "./pages/Materials.jsx";
+import Booking from "./pages/Booking.jsx";
 function App() {
+
   return (
     <>
       <Router>
         <Toaster />
+        {/* <Navbar/> */}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to="/login" />} />
@@ -63,12 +68,19 @@ function App() {
           <Route path="/setup/account/unit" element={<Unit />} />
           <Route path="/setup/account/room" element={<Room />} />
           <Route path="/setup/User-role" element={<UserRole />} />
+          {/* tickets */}
           <Route path="/tickets" element={<Ticket />} />
           <Route path="/tickets/details/:id" element={<TicketDetails />} />
           <Route path="/tickets/create-ticket" element={<CreateTicket />} />
+          {/* business */}
           <Route path="/business" element={<Business />} />
           <Route path="/business/details/:id" element={<BusinessDetails />} />
           <Route path="/business/add-business" element={<AddBusiness />} />
+          <Route path="/business/setup-category" element={<BusinessSetup />} />
+          {/* materials */}
+          <Route path="/materials" element={<Materials/>} />
+          {/* booking */}
+          <Route path="/bookings" element={<Booking/>} />
 
         </Routes>
         <Footer/>

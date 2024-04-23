@@ -151,24 +151,24 @@ const Ticket = () => {
       </div>
       <div className="ml-64 mx-10 overflow-x-auto w-[72rem] h-screen flex flex-col">
         <div className="flex my-10 justify-start gap-20 ">
-          <div className="shadow-xl rounded-full border-4 border-green-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-green-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Open Tickets</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="shadow-xl rounded-full border-4 border-red-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-red-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Close Tickets</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
 
-          <div className="shadow-xl rounded-full border-4 border-orange-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-orange-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Request</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="shadow-xl rounded-full border-4 border-blue-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-blue-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Complaint</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="shadow-xl rounded-full border-4 border-yellow-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-yellow-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Suggestion</p>
             <p className="text-center font-semibold text-lg">0</p>
           </div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Selector from "../Selector";
-import { Calendar } from "primereact/calendar";
 import * as XLSX from "xlsx";
 
 const Modal = ({ onclose }) => {
@@ -74,21 +73,15 @@ const Modal = ({ onclose }) => {
                 options={options.user}
               />
               <div>
-                <h2
-                  onClick={() => showCalendar(!calendar)}
-                  className=" cursor-pointer"
-                >
-                  Month
-                </h2>
+                <h2 className=" cursor-pointer">Month</h2>
 
-                <Calendar
-                  className="border p-2 rounded-md shadow-md"
-                  calendarClassName="border rounded-md shadow-md"
+                <input
+                  type="month"
+                  name=""
+                  id=""
                   value={date}
                   onChange={(e) => setDate(e.value)}
-                  view="month"
-                  dateFormat="mm/yy"
-                  showIcon
+                  className="border rounded-md  p-2"
                 />
               </div>
             </div>

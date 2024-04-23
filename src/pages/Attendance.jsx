@@ -54,20 +54,20 @@ const Attendance = () => {
       <Navbar />
       <div className="flex w-full mx-10 my-10 flex-col">
       <div className="flex  justify-center my-5 gap-20 ">
-          <div className="shadow-xl rounded-full border-4 border-gray-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-gray-400 w-52  px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Total Employees</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="shadow-xl rounded-full border-4 border-green-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-green-400 w-52  px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Present</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
-          <div className="shadow-xl rounded-full border-4 border-red-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-red-400 w-52  px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Absent</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
 
-          <div className="shadow-xl rounded-full border-4 border-orange-400 w-52 p-4 px-6 flex flex-col items-center">
+          <div className="shadow-xl rounded-full border-4 border-orange-400 w-52  px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">On Leave</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>

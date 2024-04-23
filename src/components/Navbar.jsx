@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { Link, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { menus } from "../utils/menus";
+import { PiSignOutBold } from "react-icons/pi";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    navigate("/");
+  };
+
   return (
     <section className="flex gap-6 sticky top-0 left-0 bottom-0">
       <div
@@ -12,7 +18,9 @@ const Navbar = () => {
           open ? "w-60" : "w-20"
         } duration-500 text-gray-100 px-4 rounded-r-2xl shadow-2xl overflow-y-auto custom-scrollbar`}
       >
-         <div className={`py-3 flex  ${open ? "justify-end": "justify-center"} `}>
+        <div
+          className={`py-3 flex  ${open ? "justify-end" : "justify-center"} `}
+        >
           <HiMenuAlt3
             size={26}
             className="cursor-pointer "
@@ -52,9 +60,14 @@ const Navbar = () => {
               </h2>
             </NavLink>
           ))}
+          <div className="border-t mb-2 ">
+            <button onClick={handleLogout} className="font-semibold flex items-center rounded-md px-4 py-2 hover:bg-white hover:text-black my-2 gap-4">
+              <PiSignOutBold size={20} />
+             {open && "Logout"}
+            </button>
+          </div>
         </div>
       </div>
-     
     </section>
   );
 };

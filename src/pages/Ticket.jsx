@@ -6,12 +6,6 @@ import { Link } from "react-router-dom";
 import { ImEye } from "react-icons/im";
 
 const Ticket = () => {
- 
-  const [selectedOption, setSelectedOption] = useState("all");
-
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
   const columns = [
     {
       name: "Action",
@@ -182,12 +176,9 @@ const Ticket = () => {
                 type="radio"
                 id="all"
                 name="status"
-                value="all"
-                checked={selectedOption === "all"}
-                onChange={handleChange}
                 className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
               />
-              <label htmlFor="all " className="text-sm">
+              <label htmlFor="all" className="text-sm">
                 All
               </label>
 
@@ -195,9 +186,6 @@ const Ticket = () => {
                 type="radio"
                 id="open"
                 name="status"
-                value="open"
-                checked={selectedOption === "open"}
-                onChange={handleChange}
                 className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
               />
               <label htmlFor="open" className="text-sm">
@@ -208,9 +196,6 @@ const Ticket = () => {
                 type="radio"
                 id="close"
                 name="status"
-                value="close"
-                checked={selectedOption === "close"}
-                onChange={handleChange}
                 className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
               />
               <label htmlFor="close" className="text-sm">
@@ -221,9 +206,6 @@ const Ticket = () => {
                 type="radio"
                 id="inprogress"
                 name="status"
-                value="inprogress"
-                checked={selectedOption === "inprogress"}
-                onChange={handleChange}
                 className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
               />
               <label htmlFor="inprogress" className="text-sm">
@@ -234,9 +216,6 @@ const Ticket = () => {
                 type="radio"
                 id="resolved"
                 name="status"
-                value="resolved"
-                checked={selectedOption === "resolved"}
-                onChange={handleChange}
                 className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
               />
               <label htmlFor="resolved" className="text-sm">

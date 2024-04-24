@@ -54,7 +54,7 @@ const Navbar = () => {
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2
                 style={{
-                  transitionDelay: `${i + 3}00ms`,
+                  transitionDelay: `${i + 2}00ms`,
                 }}
                 className={`whitespace-pre duration-300 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"

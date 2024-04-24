@@ -1,3 +1,5 @@
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -39,6 +41,7 @@ import Booking from "./pages/Booking.jsx";
 import FacilityBooking from "./pages/SubPages/FacilityBooking.jsx";
 import BookingDetails from "./pages/SubPages/details/BookingDetails.jsx";
 import SetupFacility from "./pages/SubPages/SetupFacility.jsx";
+import Communication from "./pages/Communication.jsx";
 function App() {
   return (
     <>
@@ -93,6 +96,11 @@ function App() {
           <Route
             path="/bookings/setup-facility"
             element={<SetupFacility />}
+          />
+          {/* communication */}
+          <Route
+            path="/communication"
+            element={<Communication />}
           />
         </Routes>
         <Footer />

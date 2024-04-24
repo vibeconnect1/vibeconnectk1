@@ -74,7 +74,6 @@ const Booking = () => {
     },
   ];
 
-
   const [filteredData, setFilteredData] = useState(data);
   const handleSearch = (event) => {
     const searchValue = event.target.value;
@@ -95,7 +94,7 @@ const Booking = () => {
     },
   };
   return (
-    <section className="flex gap-20 mr-5">
+    <section className="flex mr-5">
       <Navbar />
       <div className="p-4 w-full my-2 flex mx-5 flex-col">
         <div className="flex justify-center">
@@ -134,7 +133,7 @@ const Booking = () => {
                   className="bg-black w-20 rounded-lg flex font-semibold items-center gap-2 text-white p-2 my-5"
                 >
                   <IoAddCircleOutline size={20} />
-                  Add
+                  Book
                 </Link>
                 <button
                   onClick={() => showModal(true)}
@@ -153,8 +152,10 @@ const Booking = () => {
             {modal && <ExportBookingModal onclose={() => showModal(false)} />}
           </div>
         )}
-         {page === "setup" && (
-          <SetupBookingFacility/>
+        {page === "setup" && (
+          <div>
+            <SetupBookingFacility />
+          </div>
         )}
       </div>
     </section>

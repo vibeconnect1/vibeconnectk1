@@ -30,14 +30,15 @@ import { AiOutlineSchedule } from "react-icons/ai";
 import { BsSpeedometer2 } from "react-icons/bs";
 export const menus = [
   { name: "Dashboard", link: "/dashboard", icon: MdOutlineDashboard },
+  { name: "Assets", link: "/assets", icon: BsBuilding },
+  { name: "Service", link: "/service", icon: LuSettings2 },
   { name: "Attendance", link: "/attendance", icon: BsFileRuled },
   { name: "Business", link: "/business", icon: IoBusinessOutline },
   { name: "Materials", link: "/materials", icon: TbReportAnalytics },
   { name: "Bookings", link: "/bookings", icon: AiOutlineFieldTime },
   { name: "Documents", link: "/documents", icon: SlDocs },
   { name: "Tickets/CAR", link: "/tickets", icon: BsTicketPerforated },
-  { name: "Events", link: "/events", icon: BsCalendar2Event },
-  { name: "Broadcast", link: "/broadcast", icon: BsBroadcast },
+  { name: "Communication", link: "/communication", icon: BsBroadcast },
   { name: "Supplier", link: "/supplier", icon: AiOutlineUser },
   { name: "Customer", link: "/customer", icon: HiMiniUser },
   { name: "Tasks", link: "/task", icon: FaTasks },
@@ -51,8 +52,6 @@ export const menus = [
   { name: "MOM", link: "/MOM", icon: AiOutlineFileText },
   { name: "Schedule", link: "/schedule", icon: AiOutlineSchedule },
   { name: "Meters", link: "/meters", icon: BsSpeedometer2 },
-  { name: "Service", link: "/service", icon: LuSettings2 },
-  { name: "Assets", link: "/assets", icon: BsBuilding },
   { name: "Report", link: "/report", icon: FiFile },
   { name: "Setup", link: "/setup", icon: RiSettings4Line },
 ];

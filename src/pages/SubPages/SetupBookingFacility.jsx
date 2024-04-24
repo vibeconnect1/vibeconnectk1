@@ -45,16 +45,16 @@ const SetupBookingFacility = () => {
       selector: (row) => row.createdOn,
       sortable: true,
     },
-    {
-      name: "Created By",
-      selector: (row) => row.createdBy,
-      sortable: true,
-    },
-    {
-      name: "Status",
-      selector: (row) => row.status,
-      sortable: true,
-    },
+    // {
+    //   name: "Created By",
+    //   selector: (row) => row.createdBy,
+    //   sortable: true,
+    // },
+    // {
+    //   name: "Status",
+    //   selector: (row) => row.status,
+    //   sortable: true,
+    // },
   ];
 
   const setupData = [
@@ -69,7 +69,7 @@ const SetupBookingFacility = () => {
       advBooking: "date/time",
       createdOn: "23/04/2024 - time",
       createdBy: "user",
-      status: <Switch checked={"checked"} />
+      // status: <Switch checked={"checked"} />,
     },
     {
       id: 2,
@@ -82,9 +82,8 @@ const SetupBookingFacility = () => {
       advBooking: "date/time",
       createdOn: "23/04/2024 - time",
       createdBy: "user",
-      status: <Switch />
+      // status: <Switch />,
     },
-    
   ];
   const [filteredData, setFilteredData] = useState(setupData);
   const handleSearch = (event) => {
@@ -106,7 +105,7 @@ const SetupBookingFacility = () => {
     },
   };
   return (
-    <div className="max-w-[75rem]">
+    <div >
       <div className="flex justify-between items-center">
         <input
           type="text"

@@ -51,6 +51,8 @@ import CreateInbound from "./pages/SubPages/CreateInbound.jsx";
 import InBoundDetails from "./pages/SubPages/details/InBoundDetails.jsx";
 import CreateOutbound from "./pages/SubPages/CreateOutbound.jsx";
 import OutBoundDetails from "./pages/SubPages/details/OutBoundDetails.jsx";
+import Asset from "./pages/Asset.jsx";
+import AddAsset from "./pages/SubPages/AddAsset.jsx";
 function App() {
   return (
     <>
@@ -138,6 +140,15 @@ function App() {
            <Route
             path="/mail-room/outbound/outbound-details"
             element={<OutBoundDetails />}
+          />
+          {/* Asset */}
+           <Route
+            path="/assets"
+            element={<Asset />}
+          />
+           <Route
+            path="/assets/add-asset"
+            element={<AddAsset />}
           />
         </Routes>
         <Footer />

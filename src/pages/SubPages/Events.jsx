@@ -102,20 +102,8 @@ const Events = () => {
   };
   return (
     <div className="my-10 ">
-      <div className="flex justify-between items-center my-5 ">
-        <input
-          type="text"
-          placeholder="Search By title"
-          className="border-2 p-2 w-96 border-gray-300 rounded-lg"
-          value={searchText}
-          onChange={handleSearch}
-        />
-        <div className="flex gap-2">
-          <button className="text-lg font-semibold border-2 border-black px-4 p-1 rounded-md" onClick={() => setFilter(!filter)}>
-            Filter
-          </button>
-          {filter && (
-            <div className="flex gap-2 items-center justify-around">
+       {filter && (
+            <div className="flex items-center justify-center gap-2">
               <select className="border p-1 px-4 border-gray-500 rounded-md">
                 <option value="">Select Unit</option>
                 <option value="unit1">Unit 1</option>
@@ -153,15 +141,30 @@ const Events = () => {
               </button>
             </div>
           )}
-        <Link
-          to={"/communication/create-event"}
-          className="bg-black  rounded-lg flex font-semibold  items-center gap-2 text-white p-2 "
-        >
-          <IoAddCircleOutline size={20} />
-          Add
-        </Link>
+      <div className="flex justify-between items-center my-5 ">
+        <input
+          type="text"
+          placeholder="Search By title"
+          className="border-2 p-2 w-96 border-gray-300 rounded-lg"
+          value={searchText}
+          onChange={handleSearch}
+        />
+        <div className="flex gap-2">
+          <button
+            className="text-lg font-semibold border-2 border-black px-4 p-1 rounded-md"
+            onClick={() => setFilter(!filter)}
+          >
+            Filter
+          </button>
+         
+          <Link
+            to={"/communication/create-event"}
+            className="bg-black  rounded-lg flex font-semibold  items-center gap-2 text-white p-2 "
+          >
+            <IoAddCircleOutline size={20} />
+            Add
+          </Link>
         </div>
-        
       </div>
       <DataTable
         columns={column}

@@ -107,6 +107,7 @@ const CreateTicket = () => {
         <div>
           {behalf === "self" ? (
             <Collapsible
+            readOnly
               trigger={
                 <CustomTrigger isOpen={isOpen}>Requestor Details</CustomTrigger>
               }

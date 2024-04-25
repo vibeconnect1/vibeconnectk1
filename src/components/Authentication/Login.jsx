@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import wave from "/wave.png";
+import { login } from "../../api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Login = () => {
       toast.error("Please fill in all fields.");
       return;
     }
+    await login(formData)
     setLoading(true);
     const loadingToast = toast.loading("Processing your data please wait...");
     try {
@@ -84,6 +86,7 @@ const Login = () => {
                 placeholder="********"
                 type={password ? "text" : "password"}
                 onChange={onChange}
+                value={formData.password}
               />
               <div className="p-1 rounded-full  absolute top-12 right-2 transform -translate-y-1/2 cursor-pointer font">
                 {password ? (

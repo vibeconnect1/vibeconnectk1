@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { ImEye } from "react-icons/im";
-import { BiExport } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { Calendar } from 'react-date-range';
 
 const Events = () => {
   const [searchText, setSearchText] = useState("");
+  const [filter, setFilter] = useState(false);
   const column = [
     {
       name: "Action",
       cell: (row) => (
-        <Link to={`/bookings/booking-details/${row.id}`}>{row.action}</Link>
+        <Link to={`/communication/event/event-details/${row.id}`}>
+          {row.action}
+        </Link>
       ),
       sortable: true,
     },
@@ -100,8 +101,8 @@ const Events = () => {
     },
   };
   return (
-    <div className="my-10">
-      <div className="flex justify-between items-center">
+    <div className="my-10 ">
+      <div className="flex justify-between items-center my-5 ">
         <input
           type="text"
           placeholder="Search By title"
@@ -109,26 +110,58 @@ const Events = () => {
           value={searchText}
           onChange={handleSearch}
         />
-        <div>
-          <select className="border p-1 px-4 border-gray-500 rounded-md">
-            <option value="">Select Unit</option>
-            <option value="unit1">Unit 1</option>
-            <option value="unit2">Unit 2</option>
-          </select>
-          {<Calendar
-        date={new Date()}
-        // onChange={this.handleSelect}
-      />}
+        <div className="flex gap-2">
+          <button className="text-lg font-semibold border-2 border-black px-4 p-1 rounded-md" onClick={() => setFilter(!filter)}>
+            Filter
+          </button>
+          {filter && (
+            <div className="flex gap-2 items-center justify-around">
+              <select className="border p-1 px-4 border-gray-500 rounded-md">
+                <option value="">Select Unit</option>
+                <option value="unit1">Unit 1</option>
+                <option value="unit2">Unit 2</option>
+              </select>
+
+              <div className="flex gap-4 items-center  ">
+                <div className="flex gap-2 items-center">
+                  <label htmlFor="">From:</label>
+                  <input
+                    type="date"
+                    name=""
+                    id=""
+                    className="border border-black rounded-md px-4"
+                  />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <label htmlFor="">To:</label>
+                  <input
+                    type="date"
+                    name=""
+                    id=""
+                    className="border border-black rounded-md px-4"
+                  />
+                </div>
+              </div>
+              <select className="border p-1 px-4 border-gray-500 rounded-md">
+                <option value="">Select Status</option>
+                <option value="unit1">Published</option>
+                <option value="unit2">Disabled</option>
+                <option value="unit2">Rejected</option>
+              </select>
+              <button className="bg-black p-2 text-white rounded-md">
+                Apply
+              </button>
+            </div>
+          )}
+        <Link
+          to={"/communication/create-event"}
+          className="bg-black  rounded-lg flex font-semibold  items-center gap-2 text-white p-2 "
+        >
+          <IoAddCircleOutline size={20} />
+          Add
+        </Link>
         </div>
-        <div className="flex gap-4 justify-end w-full">
-          <Link
-            to={""}
-            className="bg-black  rounded-lg flex font-semibold items-center gap-2 text-white p-2 my-5"
-          >
-            <IoAddCircleOutline size={20} />
-            Add Event
-          </Link>
-        </div>
+        
       </div>
       <DataTable
         columns={column}

@@ -1,5 +1,5 @@
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -42,6 +42,15 @@ import FacilityBooking from "./pages/SubPages/FacilityBooking.jsx";
 import BookingDetails from "./pages/SubPages/details/BookingDetails.jsx";
 import SetupFacility from "./pages/SubPages/SetupFacility.jsx";
 import Communication from "./pages/Communication.jsx";
+import CreateEvent from "./pages/SubPages/CreateEvent.jsx";
+import EventDetails from "./pages/SubPages/details/EventDetails.jsx";
+import CreateBroadcst from "./pages/SubPages/CreateBroadcst.jsx";
+import BroadcastDetails from "./pages/SubPages/details/BroadcastDetails.jsx";
+import MailRoom from "./pages/MailRoom.jsx";
+import CreateInbound from "./pages/SubPages/CreateInbound.jsx";
+import InBoundDetails from "./pages/SubPages/details/InBoundDetails.jsx";
+import CreateOutbound from "./pages/SubPages/CreateOutbound.jsx";
+import OutBoundDetails from "./pages/SubPages/details/OutBoundDetails.jsx";
 function App() {
   return (
     <>
@@ -93,14 +102,42 @@ function App() {
             path="/bookings/booking-details/:id"
             element={<BookingDetails />}
           />
-          <Route
-            path="/bookings/setup-facility"
-            element={<SetupFacility />}
-          />
+          <Route path="/bookings/setup-facility" element={<SetupFacility />} />
           {/* communication */}
+          <Route path="/communication" element={<Communication />} />
+          <Route path="/communication/create-event" element={<CreateEvent />} />
           <Route
-            path="/communication"
-            element={<Communication />}
+            path="/communication/event/event-details/:id"
+            element={<EventDetails />}
+          />
+          <Route
+            path="/communication/broadcast/create-broadcast"
+            element={<CreateBroadcst />}
+          />
+          <Route
+            path="/communication/broadcast/broadcast-details/:id"
+            element={<BroadcastDetails />}
+          />
+          {/* mail room */}
+          <Route
+            path="/mail-room"
+            element={<MailRoom />}
+          />
+          <Route
+            path="/mail-room/inbound/create-inbound"
+            element={<CreateInbound />}
+          />
+          <Route
+            path="/mail-room/inbound/inbound-details"
+            element={<InBoundDetails />}
+          />
+          <Route
+            path="/mail-room/outbound/create-outbound"
+            element={<CreateOutbound />}
+          />
+           <Route
+            path="/mail-room/outbound/outbound-details"
+            element={<OutBoundDetails />}
           />
         </Routes>
         <Footer />

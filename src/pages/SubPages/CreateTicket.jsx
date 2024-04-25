@@ -18,7 +18,7 @@ const CreateTicket = () => {
   const [selectedAdminPriority, setSelectedAdminPriority] = useState("");
   const [selectedProactiveReactive, setSelectedProactiveReactive] =
     useState("");
-    const [user, setUser]=useState("")
+  const [user, setUser] = useState("");
   const [referenceNumber, setReferenceNumber] = useState("");
   const [attachments, setAttachments] = useState([]);
   const options = {
@@ -38,7 +38,7 @@ const CreateTicket = () => {
     adminPriority: ["P1", "P2", "P3", "P4"],
     priority: ["Low", "Medium", "High"],
     proactiveReactive: ["Proactive", "Reactive"],
-    user:["user1", "user2"]
+    user: ["user1", "user2"],
   };
 
   const handleOptionChange = (event, setState) => {
@@ -66,18 +66,18 @@ const CreateTicket = () => {
     setSelectedProactiveReactive("");
     setSelectedCategory("");
     setTicketType("");
-    setUser("")
+    setUser("");
   };
   return (
     <section className="flex justify-center items-center h-screen my-28">
       <form
-        className="border border-gray-300 rounded-lg w-[60rem] p-8"
+        className="border border-gray-300 rounded-lg sm:w-[60rem] p-8"
         onSubmit={handleSubmit}
       >
         <h2 className="text-center text-xl font-bold p-2 bg-black rounded-full text-white">
           Create Ticket
         </h2>
-        <ul className="flex justify-around my-5 items-center">
+        <ul className="flex sm:flex-row flex-col justify-around my-5 items-center">
           <li className="font-bold">On Behalf Of:</li>
           <li
             className={`hover:bg-black hover:text-white cursor-pointer rounded-full px-5 py-2 ${
@@ -104,40 +104,39 @@ const CreateTicket = () => {
             FM User
           </li>
         </ul>
-
-        {behalf === "self" ? (
-          <Collapsible
-            trigger={
-              <CustomTrigger isOpen={isOpen}>Requestor Details</CustomTrigger>
-            }
-            onOpen={() => setIsOpen(true)}
-            onClose={() => setIsOpen(false)}
-            className="bg-gray-300 p-2 rounded-md font-bold "
-          >
-            <div className="grid grid-cols-3 bg-gray-300 p-2 rounded-md gap-5 pb-4">
-              <p>Name:</p>
-              <p>Contact No:</p>
-              <p>Site:</p>
-              <p>Department:</p>
-              <p>Unit:</p>
-            </div>
-          </Collapsible>
-        ) : (
-          <div className="flex items-center  gap-4 my-5">
-            <h2 className="font-bold ">Requestor Deatils :</h2>
-            <Selector
-            //   heading={"User"}
-              selectedOption={user}
-              handleOptionChange={(e) =>
-                handleOptionChange(e, setUser)
-              }
-              subHeading={"Choose User"}
-              options={options.user}
-            />
-          </div>
-        )}
         <div>
-          <ul className="flex justify-around my-5 items-center">
+          {behalf === "self" ? (
+            <Collapsible
+              trigger={
+                <CustomTrigger isOpen={isOpen}>Requestor Details</CustomTrigger>
+              }
+              onOpen={() => setIsOpen(true)}
+              onClose={() => setIsOpen(false)}
+              className="bg-gray-300 p-2 rounded-md font-bold "
+            >
+              <div className="grid grid-cols-3 bg-gray-300 p-2 rounded-md gap-5 pb-4">
+                <p>Name:</p>
+                <p>Contact No:</p>
+                <p>Site:</p>
+                <p>Department:</p>
+                <p>Unit:</p>
+              </div>
+            </Collapsible>
+          ) : (
+            <div className="flex items-center  gap-4 my-5">
+              <h2 className="font-bold ">Requestor Deatils :</h2>
+              <Selector
+                //   heading={"User"}
+                selectedOption={user}
+                handleOptionChange={(e) => handleOptionChange(e, setUser)}
+                subHeading={"Choose User"}
+                options={options.user}
+              />
+            </div>
+          )}
+        </div>
+        <div>
+          <ul className="flex sm:flex-row flex-col justify-around my-5 items-center">
             <li className="font-bold">Ticket Type:</li>
             <li
               className={`hover:bg-black hover:text-white cursor-pointer rounded-full px-5 py-2 ${
@@ -165,7 +164,7 @@ const CreateTicket = () => {
             </li>
           </ul>
         </div>
-        <div className="ml-5 grid grid-cols-3 place-content-center w-full gap-4">
+        <div className="ml-5 grid sm:grid-cols-3 place-content-center w-full gap-4">
           <Selector
             heading={"Category"}
             selectedOption={selectedCategory}
@@ -241,8 +240,8 @@ const CreateTicket = () => {
             className="border border-black rounded-md"
           />
         </div>
-        
-        <FileInput handleFileChange={handleFileChange}/>
+
+        <FileInput handleFileChange={handleFileChange} />
         <div>
           {attachments.map((file, index) => (
             <div key={index}>

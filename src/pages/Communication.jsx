@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Events from "./SubPages/Events";
 import Broadcast from "./SubPages/Broadcast";
-import Notices from "./SubPages/Notices";
+
 
 const Communication = () => {
   const [page, setPage] = useState("event");
@@ -41,11 +41,7 @@ const Communication = () => {
            <Broadcast/>
           </div>
         )}
-        {page === "notice" && (
-          <div>
-           <Notices/>
-          </div>
-        )}
+       
       </div>
     </section>
   );

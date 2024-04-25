@@ -1,78 +1,69 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import { IoAddCircleOutline } from "react-icons/io5";
-import { ImEye } from "react-icons/im";
+import DeliveryVendorModal from "../../containers/modals/DeliveryVendorModal";
+import { BsEye } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const Broadcast = () => {
+const OutBound = () => {
+  const [modal, showModal] = useState(false);
+  const [add, setAdd] = useState(false);
   const [searchText, setSearchText] = useState("");
   const column = [
     {
       name: "Action",
       cell: (row) => (
-        <Link to={`/communication/broadcast/broadcast-details/${row.id}`}>
-          {row.action}
-        </Link>
+        <Link to={"/mail-room/outbound/outbound-details"}>{row.action}</Link>
       ),
       sortable: true,
     },
-    { name: "Title", selector: (row) => row.title, sortable: true },
+    { name: "ID", selector: (row) => row.id, sortable: true },
+    {
+      name: "Sender Name",
+      selector: (row) => row.senderName,
+      sortable: true,
+    },
+    { name: "Recipient", selector: (row) => row.recipient, sortable: true },
+    { name: "Unit", selector: (row) => row.unit, sortable: true },
+    {
+      name: "Entity",
+      selector: (row) => row.entity,
+      sortable: true,
+    },
+    {
+      name: "Courier Vendor",
+      selector: (row) => row.courierVendor,
+      sortable: true,
+    },
+    {
+      name: "AWB Number",
+      selector: (row) => row.AWB,
+      sortable: true,
+    },
     {
       name: "Type",
       selector: (row) => row.type,
       sortable: true,
     },
-    { name: "Created By", selector: (row) => row.CreatedBy, sortable: true },
+
     {
-      name: "Created On",
-      selector: (row) => row.CreatedOn,
-      sortable: true,
-    },
-    {
-      name: "Status",
-      selector: (row) => row.status,
-      sortable: true,
-    },
-    {
-      name: "Expired",
-      selector: (row) => row.expired,
-      sortable: true,
-    },
-    {
-      name: "Expired On",
-      selector: (row) => row.expiredOn,
-      sortable: true,
-    },
-    {
-      name: "Attachments",
-      selector: (row) => row.attachments,
+      name: "Sending Date",
+      selector: (row) => row.sendingDate,
       sortable: true,
     },
   ];
   const data = [
     {
       id: 1,
-      action: <ImEye />,
-      title: "test1",
-      type: "type A",
-      CreatedBy: "user 1",
-      CreatedOn: "date",
-      status: "published",
-      expired: "no",
-      expiredOn: "date",
-      attachments: "file",
-    },
-    {
-      id: 1,
-      action: <ImEye />,
-      title: "test1",
-      type: "type A",
-      CreatedBy: "user 1",
-      CreatedOn: "date",
-      status: "published",
-      expired: "no",
-      expiredOn: "date",
-      attachments: "file",
+      action: <BsEye />,
+      courierVendor: "Courier",
+      senderName: "sender A",
+      recipient: "recipient 1",
+      unit: "unit 1",
+      AWB: "AWB 1",
+      entity: "entity1",
+      type: "fac1",
+      sendingDate: "date",
     },
   ];
 
@@ -81,7 +72,7 @@ const Broadcast = () => {
     const searchValue = event.target.value;
     setSearchText(searchValue);
     const filteredResults = data.filter((item) =>
-      item.facility.toLowerCase().includes(searchValue.toLowerCase())
+      item.senderName.toLowerCase().includes(searchValue.toLowerCase())
     );
     setFilteredData(filteredResults);
   };
@@ -91,27 +82,27 @@ const Broadcast = () => {
       style: {
         backgroundColor: "black",
         color: "white",
-        fontSize: "14px",
+        fontSize: "12px",
       },
     },
   };
   return (
-    <div className="my-10">
+    <div className="my-10 ">
       <div className="flex justify-between items-center">
         <input
           type="text"
-          placeholder="Search By title"
+          placeholder="Search By Sender name"
           className="border-2 p-2 w-96 border-gray-300 rounded-lg"
           value={searchText}
           onChange={handleSearch}
         />
 
         <Link
-          to={"/communication/broadcast/create-broadcast"}
+          to={"/mail-room/outbound/create-outbound"}
           className="bg-black  rounded-lg flex font-semibold items-center gap-2 text-white p-2 my-5"
         >
           <IoAddCircleOutline size={20} />
-          Add Broadcast/Notice
+          Add
         </Link>
       </div>
       <DataTable
@@ -119,8 +110,12 @@ const Broadcast = () => {
         data={filteredData}
         customStyles={customStyle}
       />
+      {modal && <DeliveryVendorModal onclose={() => showModal(false)} />}
+      {add && (
+        <DeliveryVendorModal title={"Add"} onclose={() => setAdd(false)} />
+      )}
     </div>
   );
 };
 
-export default Broadcast;
+export default OutBound;

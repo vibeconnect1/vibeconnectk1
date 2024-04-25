@@ -145,8 +145,8 @@ const Ticket = () => {
       <div className="fixed left-0 top-0 h-full">
         <Navbar />
       </div>
-      <div className="ml-64 mx-10 overflow-x-auto w-[72rem] h-screen flex flex-col">
-        <div className="flex my-10 justify-start gap-20 ">
+      <div className="sm:ml-64 ml-24 mx-10 overflow-x-auto w-[72rem] my-10 sm:my-0 h-screen flex flex-col">
+        <div className="flex my-10 justify-start sm:gap-20 gap-5 sm:flex-row flex-col ">
           <div className="shadow-xl rounded-full border-4 border-green-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Open Tickets</p>
             <p className="text-center font-semibold text-lg ">0</p>
@@ -170,54 +170,29 @@ const Ticket = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
-          <div className=" w-full flex gap-10 justify-around">
-            <div className="flex items-center space-x-4 border border-gray-300 rounded-2xl px-3 p-2 w-full">
-              <input
-                type="radio"
-                id="all"
-                name="status"
-                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
-              />
+          <div className=" w-full flex sm:flex-row flex-col gap-10 justify-around">
+            <div className="sm:flex grid grid-cols-2 items-center space-x-4 border border-gray-300 rounded-2xl px-3 p-2 w-full">
+              <input type="radio" id="all" name="status" />
               <label htmlFor="all" className="text-sm">
                 All
               </label>
 
-              <input
-                type="radio"
-                id="open"
-                name="status"
-                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
-              />
+              <input type="radio" id="open" name="status" />
               <label htmlFor="open" className="text-sm">
                 Open
               </label>
 
-              <input
-                type="radio"
-                id="close"
-                name="status"
-                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
-              />
+              <input type="radio" id="close" name="status" />
               <label htmlFor="close" className="text-sm">
                 Close
               </label>
 
-              <input
-                type="radio"
-                id="inprogress"
-                name="status"
-                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
-              />
+              <input type="radio" id="inprogress" name="status" />
               <label htmlFor="inprogress" className="text-sm">
                 In Progress
               </label>
 
-              <input
-                type="radio"
-                id="resolved"
-                name="status"
-                className="appearance-none border border-gray-300 rounded-md p-2 focus:outline-none"
-              />
+              <input type="radio" id="resolved" name="status" />
               <label htmlFor="resolved" className="text-sm">
                 Resolved
               </label>

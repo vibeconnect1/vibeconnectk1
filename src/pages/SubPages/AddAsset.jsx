@@ -464,13 +464,6 @@ const AddAsset = () => {
                     placeholder="Alert Above Value"
                     className="border p-1 px-4 border-gray-500 rounded-md"
                   />
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder=" Multiplier Factor"
-                    className="border p-1 px-4 border-gray-500 rounded-md"
-                  />
                   <div className="flex items-center gap-2">
                     <input type="checkbox" name="" id="" />
                     <label htmlFor=""> Check Previous Reading</label>

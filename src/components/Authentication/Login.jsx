@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import wave from "/wave.png";
-import { login } from "../../api";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,15 +27,21 @@ const Login = () => {
       toast.error("Please fill in all fields.");
       return;
     }
-    // await login(formData)
+
     setLoading(true);
-    const loadingToast = toast.loading("Processing your data please wait...");
     try {
-      // api
+      console.log(formData)
+      const response = await axios.post("http://3.6.98.113/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+      toast.loading("Processing your data please wait...");
       navigate("/dashboard");
-    } finally {
-      toast.dismiss(loadingToast);
-      setLoading(false);
+    } catch (error) {
+      console.error("Login failed:", error);
+      toast.error("Login failed. Please check your credentials.");
     }
   };
   const togglePassword = () => {

@@ -291,7 +291,7 @@ const Asset = () => {
                     )
                   }
                 />
-                <span className="ml-1">{col.name}</span>
+                <span className="ml-1 min-w-fit">{col.name}</span>
               </label>
             ))}
           </div>

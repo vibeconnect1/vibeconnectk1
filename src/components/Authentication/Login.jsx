@@ -27,7 +27,7 @@ const Login = () => {
       toast.error("Please fill in all fields.");
       return;
     }
-    await login(formData)
+    // await login(formData)
     setLoading(true);
     const loadingToast = toast.loading("Processing your data please wait...");
     try {

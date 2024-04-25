@@ -30,14 +30,14 @@ const Login = () => {
 
     setLoading(true);
     try {
-      console.log(formData)
-      const response = await axios.post("http://3.6.98.113/login", {
-        email: formData.email,
-        password: formData.password,
-      });
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      toast.loading("Processing your data please wait...");
+      // console.log(formData)
+      // const response = await axios.post("http://3.6.98.113/login", {
+      //   email: formData.email,
+      //   password: formData.password,
+      // });
+      // const token = response.data.token;
+      // localStorage.setItem("token", token);
+      // toast.loading("Processing your data please wait...");
       navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);

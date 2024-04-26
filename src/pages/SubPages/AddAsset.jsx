@@ -4,6 +4,7 @@ import Switch from "../../Buttons/Switch";
 const AddAsset = () => {
   const [meterApplicable, setMeterApplicable] = useState(false);
   const [meterType, setMeterType] = useState("");
+  const [warranty, setWarranty] = useState(false);
   return (
     <section>
       <div className="m-2">
@@ -217,11 +218,21 @@ const AddAsset = () => {
                 <div className="flex items-center gap-4">
                   <p className="font-semibold">Critical:</p>
                   <div className="flex gap-2">
-                    <input type="radio" name="critical" id="yes" />
+                    <input
+                      type="radio"
+                      name="critical"
+                      id="yes"
+                      className="checked:accent-black"
+                    />
                     <label htmlFor="yes">Yes</label>
                   </div>
                   <div className="flex gap-2">
-                    <input type="radio" name="critical" id="no" />
+                    <input
+                      type="radio"
+                      name="critical"
+                      id="no"
+                      className="checked:accent-black"
+                    />
                     <label htmlFor="no">No</label>
                   </div>
                 </div>
@@ -239,11 +250,14 @@ const AddAsset = () => {
                   <>
                     <div className="flex items-center gap-4">
                       <p className="font-semibold">Meter Type:</p>
-                      <div
-                        className="flex gap-2"
-                        onClick={() => setMeterType("parent")}
-                      >
-                        <input type="radio" name="meterType" id="parent" />
+                      <div className="flex gap-2">
+                        <input
+                          type="radio"
+                          name="meterType"
+                          id="parent"
+                          className="checked:accent-black"
+                          onClick={() => setMeterType("parent")}
+                        />
                         <label htmlFor="parent">Parent</label>
                       </div>
                       <div className="flex gap-2">
@@ -252,6 +266,7 @@ const AddAsset = () => {
                           name="meterType"
                           id="sub"
                           onClick={() => setMeterType("sub")}
+                          className="checked:accent-black"
                         />
                         <label
                           htmlFor="sub"
@@ -471,6 +486,127 @@ const AddAsset = () => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="my-5">
+            <p className="border-b border-black font-semibold">
+              Warranty Details
+            </p>
+            <div className="flex gap-4 my-2 items-center justify-between">
+              <div className="flex gap-4 my-2">
+                <p className="font-semibold">Under Warranty: </p>
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    name="warranty"
+                    id="inWarranty"
+                    onClick={() => setWarranty(true)}
+                    className="checked:accent-black"
+                  />
+                  <label htmlFor="inWarranty">Yes</label>
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    name="warranty"
+                    id="notInWarranty"
+                    onClick={() => setWarranty(false)}
+                    className="checked:accent-black"
+                  />
+                  <label htmlFor="notInWarranty">No</label>
+                </div>
+              </div>
+
+              {warranty && (
+                <div className="flex items-center my-2 gap-5">
+                  <div className="flex items-center gap-2 ">
+                    <label htmlFor="" className="font-semibold">
+                      Expiry Date :
+                    </label>
+                    <input
+                      type="date"
+                      name=""
+                      id=""
+                      className="border p-1 px-4 border-gray-500 rounded-md"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <label htmlFor="" className="font-semibold">
+                      Commissioning Date:
+                    </label>
+                    <input
+                      type="date"
+                      name=""
+                      id=""
+                      className="border p-1 px-4 border-gray-500 rounded-md"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="my-5">
+              <p className="border-b border-black font-semibold">
+                Supplier Contact Details
+              </p>
+              <div className="flex flex-col my-2">
+                <label htmlFor="" className="font-semibold">
+                  Select Supplier:
+                </label>
+                <select className="border p-1 px-4 border-gray-500 rounded-md">
+                  <option value="">Select Supplier</option>
+                  <option value="unit1">Supplier 1</option>
+                  <option value="unit2">Supplier 2</option>
+                  <option value="unit2">Supplier 3</option>
+                </select>
+              </div>
+              <button className="p-1 border-2 border-black px-4 rounded-md hover:bg-black hover:text-white">
+                Add
+              </button>
+            </div>
+            <div className="my-5">
+              <p className="border-b border-black font-semibold">
+                Meter Category Type
+              </p>
+              <div className="flex flex-col my-2">
+                <label htmlFor="" className="font-semibold">
+                  Select Meter Category:
+                </label>
+                <select className="border p-1 px-4 border-gray-500 rounded-md">
+                  <option value="">Select Meter Category</option>
+                  <option value="unit1">Category 1</option>
+                  <option value="unit2">Category 2</option>
+                  <option value="unit2">Category 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <h2 className="border-b text-center text-xl border-black mb-6 font-bold">
+            Attachments
+          </h2>
+          <div className="flex flex-col gap-2">
+            <div>
+              <p className="border-b border-black my-1 font-semibold">
+               Purchase Invoice
+              </p>
+              <input type="file" name="" id="" />
+            </div>
+            <div>
+              <p className="border-b border-black my-1 font-semibold">Insurance Details</p>
+              <input type="file" name="" id="" />
+            </div>
+            <div>
+              <p className="border-b border-black my-1 font-semibold">Manuals</p>
+              <input type="file" name="" id="" />
+            </div>
+            <div>
+             <p className="border-b border-black my-1 font-semibold">Other Files</p>
+              <input type="file" name="" id="" />
+            </div>
+          </div>
+          <div className="flex gap-2 my-5 justify-end">
+        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Add AMC</button>
+        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Show Details</button>
+        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Add PPM</button>
+        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Create New Asset</button>
           </div>
         </div>
       </div>

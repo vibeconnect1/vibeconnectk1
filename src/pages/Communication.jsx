@@ -11,10 +11,10 @@ const Communication = () => {
       <Navbar />
       <div className="p-4 w-full my-2 flex mx-5 flex-col">
         <div className="flex justify-center">
-          <div className="flex flex-row gap-10 text-lg font-semibold p-2 rounded-full bg-gray-400">
+          <div className="flex flex-row gap-5 text-lg font-semibold p-2 rounded-full bg-gray-400">
             <h2
               className={`p-1 ${
-                page === "event" && "bg-white"
+                page === "event" && "bg-white text-blue-500"
               } rounded-full px-4 cursor-pointer`}
               onClick={() => setPage("event")}
             >
@@ -22,7 +22,7 @@ const Communication = () => {
             </h2>
             <h2
               className={`p-1 ${
-                page === "broadcast" && "bg-white"
+                page === "broadcast" && "bg-white text-blue-500"
               } rounded-full px-4 cursor-pointer`}
               onClick={() => setPage("broadcast")}
             >

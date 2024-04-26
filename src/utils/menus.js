@@ -31,7 +31,7 @@ import { BsSpeedometer2 } from "react-icons/bs";
 export const menus = [
   { name: "Dashboard", link: "/dashboard", icon: MdOutlineDashboard },
   { name: "Assets", link: "/assets", icon: BsBuilding },
-  { name: "Service", link: "/service", icon: LuSettings2 },
+  { name: "Service", link: "/services", icon: LuSettings2 },
   { name: "Attendance", link: "/attendance", icon: BsFileRuled },
   { name: "Business", link: "/business", icon: IoBusinessOutline },
   { name: "Materials", link: "/materials", icon: TbReportAnalytics },
@@ -39,8 +39,8 @@ export const menus = [
   { name: "Tickets/CAR", link: "/tickets", icon: BsTicketPerforated },
   { name: "Communication", link: "/communication", icon: BsBroadcast },
   { name: "Mail Room", link: "/mail-room", icon: BsMailboxFlag },
+  { name: "Suppliers", link: "/suppliers", icon: AiOutlineUser },
   { name: "Documents", link: "/documents", icon: SlDocs },
-  { name: "Supplier", link: "/supplier", icon: AiOutlineUser },
   { name: "Customer", link: "/customer", icon: HiMiniUser },
   { name: "Tasks", link: "/task", icon: FaTasks },
   { name: "Parking", link: "/parking", icon: LuParkingSquare },
@@ -51,7 +51,6 @@ export const menus = [
   { name: "Audit", link: "/audit", icon: AiOutlineAudit },
   { name: "MOM", link: "/MOM", icon: AiOutlineFileText },
   { name: "Schedule", link: "/schedule", icon: AiOutlineSchedule },
-  { name: "Meters", link: "/meters", icon: BsSpeedometer2 },
   { name: "Report", link: "/report", icon: FiFile },
   { name: "Setup", link: "/setup", icon: RiSettings4Line },
 ];

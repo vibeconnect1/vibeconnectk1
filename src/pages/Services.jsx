@@ -5,16 +5,16 @@ import { BsEye, BsFilterLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import * as XLSX from "xlsx";
-import { columnsData } from "../utils/assetColumns";
+import { serviceColumns } from "../utils/assetColumns";
 import { BiEdit, BiFilter, BiFilterAlt } from "react-icons/bi";
 // import jsPDF from "jspdf";
 // import QRCode from "qrcode.react";
 
-const Asset = () => {
+const Services = () => {
   const [searchText, setSearchText] = useState("");
   const [filter, setFilter] = useState(false);
   const [omitColumn, setOmitColumn] = useState(false);
-  const [visibleColumns, setVisibleColumns] = useState(columnsData);
+  const [visibleColumns, setVisibleColumns] = useState(serviceColumns);
   const [selectedRows, setSelectedRows] = useState([]);
   const column = [
     {
@@ -24,83 +24,47 @@ const Asset = () => {
 
       sortable: true,
     },
-    { name: "Site", selector: (row) => row.site, sortable: true },
+    { name: "ID", selector: (row) => row.id, sortable: true },
     {
-      name: "Building",
-      selector: (row) => row.building,
-      sortable: true,
-    },
-    { name: "Wing", selector: (row) => row.wing, sortable: true },
-    { name: "Floor", selector: (row) => row.floor, sortable: true },
-    {
-      name: "Area",
-      selector: (row) => row.area,
+      name: "Service Name",
+      selector: (row) => row.serviceName,
       sortable: true,
     },
     {
-      name: "Room",
-      selector: (row) => row.room,
+      name: "Service Code",
+      selector: (row) => row.serviceCode,
       sortable: true,
     },
-    {
-      name: "Asset Name",
-      selector: (row) => row.assetName,
-      sortable: true,
-    },
-    {
-      name: "Asset Code",
-      selector: (row) => row.assetCode,
-      sortable: true,
-    },
-
-    {
-      name: "Serial Number",
-      selector: (row) => row.serialNumber,
-      sortable: true,
-    },
-    {
-      name: "Asset Type",
-      selector: (row) => row.serialNumber,
-      sortable: true,
-    },
-    {
-      name: "Client Name",
-      selector: (row) => row.clientName,
-      sortable: true,
-    },
-    {
-      name: "Model Number",
-      selector: (row) => row.model,
-      sortable: true,
-    },
+    { name: "Reference Number", selector: (row) => row.ref, sortable: true },
+    { name: "Category", selector: (row) => row.category, sortable: true },
     {
       name: "Group",
       selector: (row) => row.group,
       sortable: true,
     },
     {
-      name: "Sub Group",
-      selector: (row) => row.subGroup,
+      name: "UOM",
+      selector: (row) => row.UOM,
       sortable: true,
     },
     {
-      name: "Critical",
-      selector: (row) => row.critical,
+      name: "Site",
+      selector: (row) => row.site,
       sortable: true,
     },
     {
-      name: "Capacity",
-      selector: (row) => row.capacity,
+      name: "Floor",
+      selector: (row) => row.floor,
       sortable: true,
     },
     {
-      name: "Purchase Date",
-      selector: (row) => row.purchaseDate,
+      name: "Building",
+      selector: (row) => row.building,
       sortable: true,
     },
     {
-      name: "Purchase Cost",
-      selector: (row) => row.purchaseCost,
+      name: "Area",
+      selector: (row) => row.area,
       sortable: true,
     },
     {
@@ -109,58 +73,13 @@ const Asset = () => {
       sortable: true,
     },
     {
+      name: "Model Number",
+      selector: (row) => row.model,
+      sortable: true,
+    },
+    {
       name: "Created On",
       selector: (row) => row.createdOn,
-      sortable: true,
-    },
-    {
-      name: "Updated On",
-      selector: (row) => row.updatedOn,
-      sortable: true,
-    },
-    {
-      name: "Warranty",
-      selector: (row) => row.warranty,
-      sortable: true,
-    },
-    {
-      name: "Warranty Expiry",
-      selector: (row) => row.warrantyExpiry,
-      sortable: true,
-    },
-    {
-      name: "Commissioning Date",
-      selector: (row) => row.commissioningDate,
-      sortable: true,
-    },
-    {
-      name: "AMC",
-      selector: (row) => row.AMC,
-      sortable: true,
-    },
-    {
-      name: "PPM",
-      selector: (row) => row.ppm,
-      sortable: true,
-    },
-    {
-      name: "Meter Configured",
-      selector: (row) => row.meterConfigured,
-      sortable: true,
-    },
-    {
-      name: "Meter Type",
-      selector: (row) => row.meterType,
-      sortable: true,
-    },
-    {
-      name: "Submeter",
-      selector: (row) => row.subMeter,
-      sortable: true,
-    },
-    {
-      name: "Supplier",
-      selector: (row) => row.supplier,
       sortable: true,
     },
   ];
@@ -170,85 +89,48 @@ const Asset = () => {
       // action: <BsEye />,
       action: (
         <div className="flex items-center gap-7">
-          <Link to={`/assets/asset-details`}>
+          <Link to={`/services/service-details`}>
             <BsEye />
-          </Link>
-          <Link to={`/edit`}>
-            <BiEdit />
           </Link>
         </div>
       ),
-      site: "site 1",
-      building: "Building A",
-      wing: "Wing 1",
-      floor: "Floor 1",
-      area: "Area 1",
-      room: "Room 1",
-      serialNumber: "Asset Name",
-      clientName: "assetCode",
-      assetCode: "assetCode",
-      model: "assetCode",
+      serviceName: "service 1fsdddddddddddddddd",
+      serviceCode: "code 1",
+      ref: "code 1",
+      category: "Building A",
       group: "assetCode",
-      subGroup: "assetCode",
-      critical: "assetCode",
-      capacity: "assetCode",
-      purchaseDate: "assetCode",
-      purchaseCost: "assetCode",
-      status: "assetCode",
-      createdOn: "assetCode",
-      updatedOn: "assetCode",
-      warranty: "assetCode",
-      warrantyExpiry: "assetCode",
-      commissioningDate: "assetCode",
-      ppm: "assetCode",
-      AMC: "assetCode",
-      meterConfigured: "assetCode",
-      meterType: "assetCode",
-      subMeter: "assetCode",
-      supplier: "assetCode",
-      assetName: "test",
+      UOM: "uom",
+      site: "site 1",
+      floor: "Floor 1",
+      building: "Building A",
+      area: "Area 1",
+      status: "Status 1",
+      modelNumber: "model 1",
+      createdOn: "today",
     },
     {
       id: 2,
+      // action: <BsEye />,
       action: (
         <div className="flex items-center gap-7">
-          <Link to={`/assets/asset-details`}>
+          <Link to={`/services/service-details`}>
             <BsEye />
-          </Link>
-          <Link to={`/edit`}>
-            <BiEdit />
           </Link>
         </div>
       ),
+      serviceName: "main",
+      serviceCode: "code 1",
+      ref: "code 1",
+      category: "Building A",
+      group: "assetCode",
+      UOM: "uom",
       site: "site 1",
-      building: "Building A",
-      wing: "Wing 1",
       floor: "Floor 1",
+      building: "Building A",
       area: "Area 1",
-      room: "Room 1",
-      serialNumber: "Asset Name",
-      clientName: "client",
-      assetCode: "assetCode",
-      model: "123",
-      group: "group",
-      subGroup: "sub group",
-      critical: "critical",
-      capacity: "capacity",
-      purchaseDate: "purchase date",
-      purchaseCost: "purchase cost",
-      status: "status",
-      createdOn: "date",
-      updatedOn: "date",
-      warranty: "1 year",
-      warrantyExpiry: "expiry",
-      commissioningDate: "comm date",
-      ppm: "ppm",
-      AMC: "AMC",
-      meterConfigured: "meter",
-      meterType: "type",
-      subMeter: "sub",
-      supplier: "supplier",
-      assetName: "asset",
+      status: "Status 1",
+      modelNumber: "model 1",
+      createdOn: "today",
     },
   ];
 
@@ -256,20 +138,24 @@ const Asset = () => {
   const handleSearch = (event) => {
     const searchValue = event.target.value;
     setSearchText(searchValue);
-    const filteredResults = data.filter(
-      (item) =>
-        item.assetName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.model.toLowerCase().includes(searchValue.toLowerCase())
+    const filteredResults = data.filter((item) =>
+      item.serviceName.toLowerCase().includes(searchValue.toLowerCase())
     );
     setFilteredData(filteredResults);
   };
 
   const customStyle = {
-    headRow: {
+    headCells: {
       style: {
         backgroundColor: "black",
         color: "white",
         fontSize: "12px",
+        fontWeight: "bold",
+      },
+    },
+    cells: {
+      style: {
+        fontSize: "13px",
       },
     },
   };
@@ -277,7 +163,7 @@ const Asset = () => {
   const exportToExcel = () => {
     const fileType =
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
-    const fileName = "asset_data.xlsx";
+    const fileName = "service_data.xlsx";
     const ws = XLSX.utils.json_to_sheet(filteredData);
     const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
     const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
@@ -294,13 +180,13 @@ const Asset = () => {
   };
 
   return (
-    <section className="flex max-w-6xl xl:max-w-7xl mr-5">
+    <section className="flex max-w-6xl xl:max-w-7xl ">
       <Navbar />
       <div className="p-4 w-full my-2 flex mx-5 flex-col">
         {omitColumn && (
           <div className="grid grid-cols-10  gap-x-12 gap-y-4 border-2 border-black p-2 rounded-md mb-5">
             {column.map((col) => (
-              <label key={col.name} className="flex items-center ">
+              <label key={col.name} className="flex gap-2 w-full items-center ">
                 <input
                   type="checkbox"
                   checked={visibleColumns.includes(col.name)}
@@ -319,16 +205,18 @@ const Asset = () => {
         )}
         {filter && (
           <div className="flex items-center justify-center gap-2">
-            <select className="border p-1 px-4 border-gray-500 rounded-md">
-              <option value="">Select Building</option>
-              <option value="unit1">Building 1</option>
-              <option value="unit2">Building 2</option>
-            </select>
-            <select className="border p-1 px-4 border-gray-500 rounded-md">
-              <option value="">Select Wing</option>
-              <option value="unit1">Wing 1</option>
-              <option value="unit2">WIng 2</option>
-            </select>
+            <div>
+              <label htmlFor="" className="font-medium">
+                Service Name:{" "}
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Enter Service Name"
+                className="border p-1 placeholder:text-sm px-4 border-gray-500 rounded-md"
+              />
+            </div>
 
             <select className="border p-1 px-4 border-gray-500 rounded-md">
               <option value="">Select Area</option>
@@ -336,32 +224,27 @@ const Asset = () => {
               <option value="unit2">Area 2</option>
               <option value="unit2">Area 3</option>
             </select>
+
             <select className="border p-1 px-4 border-gray-500 rounded-md">
-              <option value="">Select Floor</option>
-              <option value="unit1">Floor 1</option>
-              <option value="unit2">Floor 2</option>
-              <option value="unit2">Floor 3</option>
-            </select>
-            <select className="border p-1 px-4 border-gray-500 rounded-md">
-              <option value="">Select Room</option>
-              <option value="unit1">Room 1</option>
-              <option value="unit2">Room 2</option>
-              <option value="unit2">Room 3</option>
+              <option value="">Select Building</option>
+              <option value="unit1">Building 1</option>
+              <option value="unit2">Building 2</option>
+              <option value="unit2">Building 3</option>
             </select>
             <button className="bg-black p-1 px-4 text-white rounded-md">
               Apply
             </button>
           </div>
         )}
-        <div className="flex justify-between items-center my-5 ">
+        <div className="flex flex-wrap justify-between items-center my-5 ">
           <input
             type="text"
-            placeholder="Search By asset name or model number"
+            placeholder="Search By Service name"
             className="border-2 p-2 w-96 border-gray-300 rounded-lg"
             value={searchText}
             onChange={handleSearch}
           />
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               className="text-lg font-semibold border-2 border-black px-4 p-1 flex gap-2 items-center rounded-md"
               onClick={() => setOmitColumn(!omitColumn)}
@@ -378,7 +261,7 @@ const Asset = () => {
             </button>
 
             <Link
-              to={"/assets/add-asset"}
+              to={"/services/add-service"}
               className="bg-black  rounded-lg flex font-semibold  items-center gap-2 text-white p-2 "
             >
               <IoAddCircleOutline size={20} />
@@ -412,4 +295,4 @@ const Asset = () => {
   );
 };
 
-export default Asset;
+export default Services;

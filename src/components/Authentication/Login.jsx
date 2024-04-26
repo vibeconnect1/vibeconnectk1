@@ -21,13 +21,32 @@ const Login = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(JSON.stringify({ email: formData.email, password: formData.password}));
+  
+  //   const response = await fetch("http://3.6.98.113/login", {
+      
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ email: formData.email, password: formData.password })
+  //   });
+  //   navigate("/dashboard");
+  
+  //   if (!response.ok) {
+  //     console.error('Error:', response.status);
+  //     toast.error("Failded")
+  //   }
+  // }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
       toast.error("Please fill in all fields.");
       return;
     }
-
     setLoading(true);
     try {
       console.log(formData)
@@ -55,6 +74,7 @@ const Login = () => {
         backgroundImage: `url(${wave})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        background: "blur",
         opacity: 0.9,
       }}
     >

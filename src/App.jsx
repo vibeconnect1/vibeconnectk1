@@ -53,6 +53,11 @@ import CreateOutbound from "./pages/SubPages/CreateOutbound.jsx";
 import OutBoundDetails from "./pages/SubPages/details/OutBoundDetails.jsx";
 import Asset from "./pages/Asset.jsx";
 import AddAsset from "./pages/SubPages/AddAsset.jsx";
+import AssetDetails from "./pages/SubPages/details/AssetDetails.jsx";
+import Services from "./pages/Services.jsx";
+import AddService from "./pages/SubPages/AddService.jsx";
+import ServiceDetails from "./pages/SubPages/details/ServiceDetails.jsx";
+import Suppliers from "./pages/Suppliers.jsx";
 function App() {
   return (
     <>
@@ -121,10 +126,7 @@ function App() {
             element={<BroadcastDetails />}
           />
           {/* mail room */}
-          <Route
-            path="/mail-room"
-            element={<MailRoom />}
-          />
+          <Route path="/mail-room" element={<MailRoom />} />
           <Route
             path="/mail-room/inbound/create-inbound"
             element={<CreateInbound />}
@@ -137,18 +139,24 @@ function App() {
             path="/mail-room/outbound/create-outbound"
             element={<CreateOutbound />}
           />
-           <Route
+          <Route
             path="/mail-room/outbound/outbound-details"
             element={<OutBoundDetails />}
           />
           {/* Asset */}
-           <Route
-            path="/assets"
-            element={<Asset />}
+          <Route path="/assets" element={<Asset />} />
+          <Route path="/assets/add-asset" element={<AddAsset />} />
+          <Route path="/assets/asset-details" element={<AssetDetails />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/add-service" element={<AddService />} />
+          <Route
+            path="/services/service-details"
+            element={<ServiceDetails />}
           />
-           <Route
-            path="/assets/add-asset"
-            element={<AddAsset />}
+          {/* Supplier */}
+          <Route
+            path="/suppliers"
+            element={<Suppliers />}
           />
         </Routes>
         <Footer />

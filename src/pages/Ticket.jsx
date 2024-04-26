@@ -171,31 +171,37 @@ const Ticket = () => {
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
           <div className=" w-full flex sm:flex-row flex-col gap-10 justify-around">
-            <div className="sm:flex grid grid-cols-2 items-center space-x-4 border border-gray-300 rounded-2xl px-3 p-2 w-full">
-              <input type="radio" id="all" name="status" />
-              <label htmlFor="all" className="text-sm">
-                All
-              </label>
-
-              <input type="radio" id="open" name="status" />
-              <label htmlFor="open" className="text-sm">
-                Open
-              </label>
-
-              <input type="radio" id="close" name="status" />
-              <label htmlFor="close" className="text-sm">
-                Close
-              </label>
-
-              <input type="radio" id="inprogress" name="status" />
-              <label htmlFor="inprogress" className="text-sm">
-                In Progress
-              </label>
-
-              <input type="radio" id="resolved" name="status" />
-              <label htmlFor="resolved" className="text-sm">
-                Resolved
-              </label>
+            <div className="sm:flex grid grid-cols-2 items-center justify-center gap-4 border border-gray-300 rounded-2xl px-3 p-2 w-full">
+              <div className="flex items-center gap-2">
+                <input type="radio" id="all" name="status" />
+                <label htmlFor="all" className="text-sm">
+                  All
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="radio" id="open" name="status" />
+                <label htmlFor="open" className="text-sm">
+                  Open
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="radio" id="close" name="status" />
+                <label htmlFor="close" className="text-sm">
+                  Close
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="radio" id="inprogress" name="status" />
+                <label htmlFor="inprogress" className="text-sm">
+                  In Progress
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="radio" id="resolved" name="status" />
+                <label htmlFor="resolved" className="text-sm">
+                  Resolved
+                </label>
+              </div>
             </div>
             <Link
               to={"/tickets/create-ticket"}

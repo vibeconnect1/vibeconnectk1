@@ -603,10 +603,10 @@ const AddAsset = () => {
             </div>
           </div>
           <div className="flex gap-2 my-5 justify-end">
-        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Add AMC</button>
         <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Show Details</button>
-        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Add PPM</button>
-        <button className="bg-black text-white p-2 px-4 rounded-md font-medium">Save & Create New Asset</button>
+        <button className=" border-black border-2  p-2 px-4 rounded-md font-medium">Save & Add PPM</button>
+        <button className=" border-black border-2  p-2 px-4 rounded-md font-medium">Save & Create New Asset</button>
+        <button className="border-black border-2 p-2 px-4 rounded-md font-medium">Save & Add AMC</button>
           </div>
         </div>
       </div>

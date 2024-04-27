@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { IoAddCircleOutline, IoFilterOutline } from "react-icons/io5";
 import { BsEye, BsFilterLeft } from "react-icons/bs";
@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import * as XLSX from "xlsx";
 import { columnsData } from "../utils/assetColumns";
 import { BiEdit, BiFilter, BiFilterAlt } from "react-icons/bi";
+import axios from "axios";
+import { getSiteAsset } from "../api";
 // import jsPDF from "jspdf";
 // import QRCode from "qrcode.react";
 
@@ -19,19 +21,25 @@ const Asset = () => {
   const column = [
     {
       name: "Action",
-      // cell: (row) => <Link to={""}>{row.action}</Link>,
-      selector: (row) => row.action,
-
-      sortable: true,
+      cell: (row) => (
+        <div className="flex items-center gap-4">
+          <Link to={`/assets/asset-details/${row.id}`}>
+            <BsEye size={15} />
+          </Link>
+          <Link to={`/edit/${row.id}`}>
+            <BiEdit size={15} />
+          </Link>
+        </div>
+      ),
     },
     { name: "Site", selector: (row) => row.site, sortable: true },
     {
       name: "Building",
-      selector: (row) => row.building,
+      selector: (row) => row.building_name,
       sortable: true,
     },
     { name: "Wing", selector: (row) => row.wing, sortable: true },
-    { name: "Floor", selector: (row) => row.floor, sortable: true },
+    { name: "Floor", selector: (row) => row.floor_name, sortable: true },
     {
       name: "Area",
       selector: (row) => row.area,
@@ -44,7 +52,7 @@ const Asset = () => {
     },
     {
       name: "Asset Name",
-      selector: (row) => row.assetName,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
@@ -55,7 +63,7 @@ const Asset = () => {
 
     {
       name: "Serial Number",
-      selector: (row) => row.serialNumber,
+      selector: (row) => row.serial_number,
       sortable: true,
     },
     {
@@ -70,7 +78,7 @@ const Asset = () => {
     },
     {
       name: "Model Number",
-      selector: (row) => row.model,
+      selector: (row) => row.model_number,
       sortable: true,
     },
     {
@@ -85,7 +93,7 @@ const Asset = () => {
     },
     {
       name: "Critical",
-      selector: (row) => row.critical,
+      selector: (row) => (row.critical ? "Yes" : "No"),
       sortable: true,
     },
     {
@@ -95,37 +103,37 @@ const Asset = () => {
     },
     {
       name: "Purchase Date",
-      selector: (row) => row.purchaseDate,
+      selector: (row) => row.purchased_on,
       sortable: true,
     },
     {
       name: "Purchase Cost",
-      selector: (row) => row.purchaseCost,
+      selector: (row) => row.purchase_cost,
       sortable: true,
     },
     {
       name: "Status",
-      selector: (row) => row.status,
+      selector: (row) => (row.active ? "In Use" : "Breakdown"),
       sortable: true,
     },
     {
       name: "Created On",
-      selector: (row) => row.createdOn,
+      selector: (row) => row.created_at,
       sortable: true,
     },
     {
       name: "Updated On",
-      selector: (row) => row.updatedOn,
+      selector: (row) => row.updated_at,
       sortable: true,
     },
     {
       name: "Warranty",
-      selector: (row) => row.warranty,
+      selector: (row) => row.warranty_start,
       sortable: true,
     },
     {
       name: "Warranty Expiry",
-      selector: (row) => row.warrantyExpiry,
+      selector: (row) => row.warranty_expiry,
       sortable: true,
     },
     {
@@ -145,7 +153,7 @@ const Asset = () => {
     },
     {
       name: "Meter Configured",
-      selector: (row) => row.meterConfigured,
+      selector: (row) => (row.is_meter ? "Yes" : "No"),
       sortable: true,
     },
     {
@@ -164,104 +172,18 @@ const Asset = () => {
       sortable: true,
     },
   ];
-  const data = [
-    {
-      id: 1,
-      // action: <BsEye />,
-      action: (
-        <div className="flex items-center gap-7">
-          <Link to={`/assets/asset-details`}>
-            <BsEye />
-          </Link>
-          <Link to={`/edit`}>
-            <BiEdit />
-          </Link>
-        </div>
-      ),
-      site: "site 1",
-      building: "Building A",
-      wing: "Wing 1",
-      floor: "Floor 1",
-      area: "Area 1",
-      room: "Room 1",
-      serialNumber: "Asset Name",
-      clientName: "assetCode",
-      assetCode: "assetCode",
-      model: "assetCode",
-      group: "assetCode",
-      subGroup: "assetCode",
-      critical: "assetCode",
-      capacity: "assetCode",
-      purchaseDate: "assetCode",
-      purchaseCost: "assetCode",
-      status: "assetCode",
-      createdOn: "assetCode",
-      updatedOn: "assetCode",
-      warranty: "assetCode",
-      warrantyExpiry: "assetCode",
-      commissioningDate: "assetCode",
-      ppm: "assetCode",
-      AMC: "assetCode",
-      meterConfigured: "assetCode",
-      meterType: "assetCode",
-      subMeter: "assetCode",
-      supplier: "assetCode",
-      assetName: "test",
-    },
-    {
-      id: 2,
-      action: (
-        <div className="flex items-center gap-7">
-          <Link to={`/assets/asset-details`}>
-            <BsEye />
-          </Link>
-          <Link to={`/edit`}>
-            <BiEdit />
-          </Link>
-        </div>
-      ),
-      site: "site 1",
-      building: "Building A",
-      wing: "Wing 1",
-      floor: "Floor 1",
-      area: "Area 1",
-      room: "Room 1",
-      serialNumber: "Asset Name",
-      clientName: "client",
-      assetCode: "assetCode",
-      model: "123",
-      group: "group",
-      subGroup: "sub group",
-      critical: "critical",
-      capacity: "capacity",
-      purchaseDate: "purchase date",
-      purchaseCost: "purchase cost",
-      status: "status",
-      createdOn: "date",
-      updatedOn: "date",
-      warranty: "1 year",
-      warrantyExpiry: "expiry",
-      commissioningDate: "comm date",
-      ppm: "ppm",
-      AMC: "AMC",
-      meterConfigured: "meter",
-      meterType: "type",
-      subMeter: "sub",
-      supplier: "supplier",
-      assetName: "asset",
-    },
-  ];
 
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState([]);
   const handleSearch = (event) => {
     const searchValue = event.target.value;
     setSearchText(searchValue);
-    const filteredResults = data.filter(
+    const filteredResults = filteredData.filter(
       (item) =>
-        item.assetName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.model.toLowerCase().includes(searchValue.toLowerCase())
+        item.building_name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.name.toLowerCase().includes(searchValue.toLowerCase())
     );
     setFilteredData(filteredResults);
+    console.log(filteredResults);
   };
 
   const customStyle = {
@@ -272,7 +194,26 @@ const Asset = () => {
         fontSize: "12px",
       },
     },
+    cells: {
+      style: {
+        fontWeight: "bold",
+        fontSize: "10px",
+      },
+    },
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getSiteAsset();
+        console.log(response.data.site_assets);
+        setFilteredData(response.data.site_assets);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const exportToExcel = () => {
     const fileType =
@@ -356,7 +297,7 @@ const Asset = () => {
         <div className="flex justify-between items-center my-5 ">
           <input
             type="text"
-            placeholder="Search By asset name or model number"
+            placeholder="Search By Building name or Asset Name"
             className="border-2 p-2 w-96 border-gray-300 rounded-lg"
             value={searchText}
             onChange={handleSearch}
@@ -406,6 +347,11 @@ const Asset = () => {
           customStyles={customStyle}
           responsive
           onSelectedRowsChange={handleRowSelected}
+          fixedHeader
+          fixedHeaderScrollHeight="500px"
+          pagination
+          selectableRowsHighlight
+          highlightOnHover
         />
       </div>
     </section>

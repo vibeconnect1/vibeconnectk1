@@ -1,3 +1,16 @@
+import { getItemInLocalStorage } from "../utils/localStorage";
 import axiosInstance from "./axiosInstance";
 
-export const login = async (data) => axiosInstance.post('http://3.6.98.113/login', data);
+const token = getItemInLocalStorage("TOKEN");
+
+export const login = async (data) => axiosInstance.post("/login.json", data);
+export const getSiteAsset = async () => axiosInstance.get("/site_assets.json", {
+    params: {
+      token: token
+    }
+  });
+export const getSiteAssetDetails = async (id) => axiosInstance.get(`/site_assets/${id}.json`, {
+    params: {
+      token: token
+    }
+  });

@@ -146,7 +146,7 @@ function App() {
           {/* Asset */}
           <Route path="/assets" element={<Asset />} />
           <Route path="/assets/add-asset" element={<AddAsset />} />
-          <Route path="/assets/asset-details" element={<AssetDetails />} />
+          <Route path="/assets/asset-details/:id" element={<AssetDetails />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/add-service" element={<AddService />} />
           <Route

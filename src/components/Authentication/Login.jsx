@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import wave from "/wave.png";
-import axios from "axios";
+import { login } from "../../api";
+import { setItemInLocalStorage } from "../../utils/localStorage";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ const Login = () => {
     password: "",
   });
   const [password, showPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const onChange = (e) => {
     setFormData((prev) => ({
@@ -21,25 +21,13 @@ const Login = () => {
     }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(JSON.stringify({ email: formData.email, password: formData.password}));
-  
-  //   const response = await fetch("http://3.6.98.113/login", {
-      
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({ email: formData.email, password: formData.password })
-  //   });
-  //   navigate("/dashboard");
-  
-  //   if (!response.ok) {
-  //     console.error('Error:', response.status);
-  //     toast.error("Failded")
-  //   }
-  // }
+  useEffect(() => {
+    const token = localStorage.getItem("TOKEN");
+    if (token) {
+      navigate("/dashboard");
+      toast.success("You are already logged in!");
+    }
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -47,22 +35,25 @@ const Login = () => {
       toast.error("Please fill in all fields.");
       return;
     }
-    setLoading(true);
+
     try {
-      console.log(formData)
-      const response = await axios.post("http://3.6.98.113/login", {
-        email: formData.email,
-        password: formData.password,
+      const response = await login({
+        user: {
+          email: formData.email,
+          password: formData.password,
+        },
       });
-      const token = response.data.token;
-      localStorage.setItem("token", token);
+      const token = response.data.user.api_key;
+      setItemInLocalStorage("TOKEN", token);
       toast.loading("Processing your data please wait...");
       navigate("/dashboard");
+      toast.dismiss();
     } catch (error) {
       console.error("Login failed:", error);
       toast.error("Login failed. Please check your credentials.");
     }
   };
+
   const togglePassword = () => {
     showPassword(!password);
   };

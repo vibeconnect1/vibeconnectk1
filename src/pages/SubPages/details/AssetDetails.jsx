@@ -1,8 +1,34 @@
-import React, { useState } from "react";
-import { AMCDetails, ActivityFeed, Assetinfo, History, PPM, Readings } from "./assetSubDetails";
+import React, { useEffect, useState } from "react";
+import {
+  AMCDetails,
+  ActivityFeed,
+  Assetinfo,
+  History,
+  PPM,
+  Readings,
+} from "./assetSubDetails";
+import { getSiteAssetDetails } from "../../../api";
+import { useParams } from "react-router-dom";
 
 const AssetDetails = () => {
   const [page, setPage] = useState("assetInfo");
+  const [asset, setAsset] = useState([]);
+  const { id } = useParams();
+
+ useEffect(() => {
+  const getDetails = async () => {
+    try {
+      const details = await getSiteAssetDetails(id);
+      setAsset(details.data);
+      
+    } catch (error) {
+      console.error('Error fetching site asset details:', error);
+    }
+  };
+
+  getDetails();
+}, [id]);
+
   return (
     <section className="px-10">
       <div className="p-4 w-full my-2 flex mx-5 flex-col ">
@@ -60,32 +86,32 @@ const AssetDetails = () => {
         </div>
         {page === "assetInfo" && (
           <div>
-           <Assetinfo/>
+            <Assetinfo assetData={asset} />
           </div>
         )}
         {page === "AMCDetails" && (
           <div>
-           <AMCDetails/>
+            <AMCDetails />
           </div>
         )}
         {page === "readings" && (
           <div>
-           <Readings/>
+            <Readings />
           </div>
         )}
         {page === "ppm" && (
           <div>
-           <PPM/>
+            <PPM />
           </div>
         )}
         {page === "activityFeed" && (
           <div>
-           <ActivityFeed/>
+            <ActivityFeed />
           </div>
         )}
         {page === "history" && (
           <div>
-           <History/>
+            <History />
           </div>
         )}
       </div>

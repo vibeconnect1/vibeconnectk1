@@ -96,7 +96,12 @@ const Business = () => {
               customStyles={customStyle}
               responsive
               selectableRows
-              pagination
+              fixedHeader
+          fixedHeaderScrollHeight="500px"
+          pagination
+          selectableRowsHighlight
+          highlightOnHover
+          omitColumn={column}
             />
           </div>
         </div>

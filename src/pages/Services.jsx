@@ -289,6 +289,12 @@ const Services = () => {
           customStyles={customStyle}
           responsive
           onSelectedRowsChange={handleRowSelected}
+          fixedHeader
+          fixedHeaderScrollHeight="500px"
+          pagination
+          selectableRowsHighlight
+          highlightOnHover
+          omitColumn={column}
         />
       </div>
     </section>

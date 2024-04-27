@@ -160,6 +160,12 @@ const Inbound = () => {
         columns={column}
         data={filteredData}
         customStyles={customStyle}
+        fixedHeader
+          fixedHeaderScrollHeight="500px"
+          pagination
+          selectableRowsHighlight
+          highlightOnHover
+          omitColumn={column}
       />
       {modal && <DeliveryVendorModal onclose={() => showModal(false)} />}
       {add && (

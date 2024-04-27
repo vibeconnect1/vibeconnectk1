@@ -148,6 +148,12 @@ const Booking = () => {
               columns={column}
               data={filteredData}
               customStyles={customStyle}
+              fixedHeader
+          fixedHeaderScrollHeight="500px"
+          pagination
+          selectableRowsHighlight
+          highlightOnHover
+          omitColumn={column}
             />
             {modal && <ExportBookingModal onclose={() => showModal(false)} />}
           </div>

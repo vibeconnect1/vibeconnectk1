@@ -235,6 +235,11 @@ const Ticket = () => {
               data={searchedRecord}
               customStyles={customStyle}
               pagination
+              fixedHeader
+              fixedHeaderScrollHeight="500px"
+              selectableRowsHighlight
+              highlightOnHover
+              
             />
           </div>
         </div>

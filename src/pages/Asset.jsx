@@ -206,7 +206,6 @@ const Asset = () => {
     const fetchData = async () => {
       try {
         const response = await getSiteAsset();
-        console.log(response.data.site_assets);
         setFilteredData(response.data.site_assets);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -352,6 +351,7 @@ const Asset = () => {
           pagination
           selectableRowsHighlight
           highlightOnHover
+          omitColumn={column}
         />
       </div>
     </section>

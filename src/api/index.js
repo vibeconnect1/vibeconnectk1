@@ -14,3 +14,8 @@ export const getSiteAssetDetails = async (id) => axiosInstance.get(`/site_assets
       token: token
     }
   });
+export const postSiteAsset = async (id) => axiosInstance.get(`/site_assets.json`, {
+    params: {
+      token: token
+    }
+  });

@@ -58,6 +58,7 @@ import Services from "./pages/Services.jsx";
 import AddService from "./pages/SubPages/AddService.jsx";
 import ServiceDetails from "./pages/SubPages/details/ServiceDetails.jsx";
 import Suppliers from "./pages/Suppliers.jsx";
+import ProtectedRoute from "./routes/ProtectedRoutes.jsx";
 function App() {
   return (
     <>
@@ -144,9 +145,30 @@ function App() {
             element={<OutBoundDetails />}
           />
           {/* Asset */}
-          <Route path="/assets" element={<Asset />} />
-          <Route path="/assets/add-asset" element={<AddAsset />} />
-          <Route path="/assets/asset-details/:id" element={<AssetDetails />} />
+          <Route
+            path="/assets"
+            element={
+              <ProtectedRoute>
+                <Asset />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/assets/add-asset"
+            element={
+              <ProtectedRoute>
+                <AddAsset />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/assets/asset-details/:id"
+            element={
+              <ProtectedRoute>
+                <AssetDetails />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/services" element={<Services />} />
           <Route path="/services/add-service" element={<AddService />} />
           <Route
@@ -154,10 +176,7 @@ function App() {
             element={<ServiceDetails />}
           />
           {/* Supplier */}
-          <Route
-            path="/suppliers"
-            element={<Suppliers />}
-          />
+          <Route path="/suppliers" element={<Suppliers />} />
         </Routes>
         <Footer />
       </Router>

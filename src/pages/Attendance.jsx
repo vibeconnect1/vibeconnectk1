@@ -9,9 +9,8 @@ const Attendance = () => {
   const column = [
     {
       name: "Actions",
-      
+
       selector: (row) => row.action,
-      
     },
 
     { name: "Name", selector: (row) => row.title, sortable: true },
@@ -53,7 +52,7 @@ const Attendance = () => {
     <section className="flex gap-20 mr-5">
       <Navbar />
       <div className="flex w-full mx-10 my-10 flex-col">
-      <div className="flex  justify-center my-5 gap-20 ">
+        <div className="flex  justify-center my-5 gap-20 ">
           <div className="shadow-xl rounded-full border-4 border-gray-400 w-52  px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Total Employees</p>
             <p className="text-center font-semibold text-lg ">0</p>
@@ -71,7 +70,6 @@ const Attendance = () => {
             <p className="font-semibold text-lg">On Leave</p>
             <p className="text-center font-semibold text-lg ">0</p>
           </div>
-         
         </div>
         <div className="w-full flex mx-5 flex-col">
           <div className="flex justify-between items-center">
@@ -86,7 +84,6 @@ const Attendance = () => {
             >
               Export
             </button>
-            
           </div>
           <div>
             <DataTable
@@ -95,12 +92,17 @@ const Attendance = () => {
               customStyles={customStyle}
               responsive
               selectableRows
+              fixedHeader
+              fixedHeaderScrollHeight="500px"
               pagination
+              selectableRowsHighlight
+              highlightOnHover
+              omitColumn={column}
             />
           </div>
         </div>
       </div>
-      {modal && <Modal onclose={()=>setModal(false)}/>}
+      {modal && <Modal onclose={() => setModal(false)} />}
     </section>
   );
 };

@@ -104,9 +104,7 @@ const AddAsset = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  {/* <label htmlFor="" className="font-semibold">
-                    Select Site:
-                  </label> */}
+                  
                   <input
                     type="text"
                     name=""

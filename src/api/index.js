@@ -4,18 +4,27 @@ import axiosInstance from "./axiosInstance";
 const token = getItemInLocalStorage("TOKEN");
 
 export const login = async (data) => axiosInstance.post("/login.json", data);
-export const getSiteAsset = async () => axiosInstance.get("/site_assets.json", {
+export const getSiteAsset = async () =>
+  axiosInstance.get("/site_assets.json", {
     params: {
-      token: token
-    }
+      token: token,
+    },
   });
-export const getSiteAssetDetails = async (id) => axiosInstance.get(`/site_assets/${id}.json`, {
+export const getSiteAssetDetails = async (id) =>
+  axiosInstance.get(`/site_assets/${id}.json`, {
     params: {
-      token: token
-    }
+      token: token,
+    },
   });
-export const postSiteAsset = async (id) => axiosInstance.get(`/site_assets.json`, {
+export const postSiteAsset = async (id) =>
+  axiosInstance.get(`/site_assets.json`, {
     params: {
-      token: token
-    }
+      token: token,
+    },
+  });
+export const getComplaints = async (id) =>
+  axiosInstance.get(`/pms/complaints.json`, {
+    params: {
+      token: token,
+    },
   });

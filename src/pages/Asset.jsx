@@ -7,7 +7,6 @@ import Navbar from "../components/Navbar";
 import * as XLSX from "xlsx";
 import { columnsData } from "../utils/assetColumns";
 import { BiEdit, BiFilter, BiFilterAlt } from "react-icons/bi";
-import axios from "axios";
 import { getSiteAsset } from "../api";
 // import jsPDF from "jspdf";
 // import QRCode from "qrcode.react";
@@ -347,7 +346,7 @@ const Asset = () => {
           responsive
           onSelectedRowsChange={handleRowSelected}
           fixedHeader
-          fixedHeaderScrollHeight="500px"
+          fixedHeaderScrollHeight="450px"
           pagination
           selectableRowsHighlight
           highlightOnHover

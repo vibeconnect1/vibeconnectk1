@@ -5,7 +5,7 @@ import { BsEye, BsFilterLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import * as XLSX from "xlsx";
-import { serviceColumns } from "../utils/assetColumns";
+
 import { BiEdit, BiFilter, BiFilterAlt } from "react-icons/bi";
 // import jsPDF from "jspdf";
 // import QRCode from "qrcode.react";
@@ -14,7 +14,7 @@ const Suppliers = () => {
   const [searchText, setSearchText] = useState("");
   const [filter, setFilter] = useState(false);
   const [omitColumn, setOmitColumn] = useState(false);
-  const [visibleColumns, setVisibleColumns] = useState(serviceColumns);
+
   const [selectedRows, setSelectedRows] = useState([]);
   const column = [
     {
@@ -26,60 +26,40 @@ const Suppliers = () => {
     },
     { name: "ID", selector: (row) => row.id, sortable: true },
     {
-      name: "Service Name",
+      name: "Company Name",
       selector: (row) => row.serviceName,
       sortable: true,
     },
     {
-      name: "Service Code",
+      name: "GSTIN Number",
       selector: (row) => row.serviceCode,
       sortable: true,
     },
-    { name: "Reference Number", selector: (row) => row.ref, sortable: true },
-    { name: "Category", selector: (row) => row.category, sortable: true },
+    { name: "PAN Number", selector: (row) => row.ref, sortable: true },
+    { name: "Supplier Type", selector: (row) => row.category, sortable: true },
     {
-      name: "Group",
+      name: "PO Outstandings",
       selector: (row) => row.group,
       sortable: true,
     },
     {
-      name: "UOM",
+      name: "WO Outstandings",
       selector: (row) => row.UOM,
       sortable: true,
     },
     {
-      name: "Site",
+      name: "Ratings",
       selector: (row) => row.site,
       sortable: true,
     },
     {
-      name: "Floor",
+      name: "Signed On Contract",
       selector: (row) => row.floor,
       sortable: true,
     },
     {
-      name: "Building",
-      selector: (row) => row.building,
-      sortable: true,
-    },
-    {
-      name: "Area",
-      selector: (row) => row.area,
-      sortable: true,
-    },
-    {
       name: "Status",
-      selector: (row) => row.status,
-      sortable: true,
-    },
-    {
-      name: "Model Number",
-      selector: (row) => row.model,
-      sortable: true,
-    },
-    {
-      name: "Created On",
-      selector: (row) => row.createdOn,
+      selector: (row) => row.building,
       sortable: true,
     },
   ];
@@ -155,7 +135,7 @@ const Suppliers = () => {
     },
     cells: {
       style: {
-        fontSize: "13px",
+        fontSize: "11px",
       },
     },
   };
@@ -183,27 +163,6 @@ const Suppliers = () => {
     <section className="flex max-w-6xl xl:max-w-7xl ">
       <Navbar />
       <div className="p-4 w-full my-2 flex mx-5 flex-col">
-        {omitColumn && (
-          <div className="grid grid-cols-10  gap-x-12 gap-y-4 border-2 border-black p-2 rounded-md mb-5">
-            {column.map((col) => (
-              <label key={col.name} className="flex gap-2 w-full items-center ">
-                <input
-                  type="checkbox"
-                  checked={visibleColumns.includes(col.name)}
-                  onChange={() =>
-                    setVisibleColumns((prev) =>
-                      prev.includes(col.name)
-                        ? prev.filter((item) => item !== col.name)
-                        : [...prev, col.name]
-                    )
-                  }
-                />
-                <span className="ml-1 text-sm">{col.name}</span>
-              </label>
-            ))}
-          </div>
-        )}
-
         <div className="flex flex-wrap justify-between items-center my-5 ">
           <input
             type="text"
@@ -213,15 +172,9 @@ const Suppliers = () => {
             onChange={handleSearch}
           />
           <div className="flex flex-wrap gap-2">
-            <button
-              className="text-lg font-semibold border-2 border-black px-4 p-1 flex gap-2 items-center rounded-md"
-              onClick={() => setOmitColumn(!omitColumn)}
-            >
-              <IoFilterOutline />
-              Filter Columns
-            </button>
+            
             <Link
-              to={"/services/add-service"}
+              to={"/suppliers/add-supplier"}
               className="bg-black  rounded-lg flex font-semibold  items-center gap-2 text-white p-2 "
             >
               <IoAddCircleOutline size={20} />
@@ -244,7 +197,7 @@ const Suppliers = () => {
         </div>
         <DataTable
           selectableRows
-          columns={column.filter((col) => visibleColumns.includes(col.name))}
+          columns={column}
           data={filteredData}
           customStyles={customStyle}
           responsive
@@ -254,7 +207,7 @@ const Suppliers = () => {
           pagination
           selectableRowsHighlight
           highlightOnHover
-          omitColumn={column}
+          
         />
       </div>
     </section>

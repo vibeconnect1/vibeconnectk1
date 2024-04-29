@@ -22,8 +22,14 @@ export const postSiteAsset = async (id) =>
       token: token,
     },
   });
-export const getComplaints = async (id) =>
+export const getComplaints = async () =>
   axiosInstance.get(`/pms/complaints.json`, {
+    params: {
+      token: token,
+    },
+  });
+export const getComplaintsDetails = async (id) =>
+  axiosInstance.get(`pms/complaints/${id}.json`, {
     params: {
       token: token,
     },

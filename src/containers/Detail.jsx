@@ -2,18 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Detail = ({ heading, details }) => {
-  // const { id } = useParams();
-  // const [detailData, setDetailData] = useState(null);
+  
+  
 
-  // useEffect(() => {
-  //   const detail = details.find((item) => item.id === parseInt(id));
-  //   setDetailData(detail);
-  //   console.log(detail)
-  // }, [details, id]);
-
-  // if (!detailData) {
-  //   return <p>Loading...</p>;
-  // }
   return (
     <div className="flex flex-col items-center gap-8">
       <h2 className="text-center w-screen bg-black text-white font-semibold text-lg p-2 px-4 ">

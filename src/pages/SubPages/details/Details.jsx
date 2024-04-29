@@ -1,53 +1,60 @@
-import React from "react";
-import BackButton from "../../../Buttons/BackButton";
+import React, { useEffect, useState } from "react";
 import Detail from "../../../containers/Detail";
+import { getComplaintsDetails } from "../../../api";
+import { useParams } from "react-router-dom";
 
 const TicketDetails = () => {
+  const { id } = useParams();
+  const [ticketinfo, setTicketInfo] = useState([]);
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      const response = await getComplaintsDetails(id);
+      console.log(response.data);
+      setTicketInfo(response.data);
+    };
+    fetchDetails();
+  }, []);
+
   const ticketDetails = [
-    { title: "Title", description: "Description 1" },
-    { title: "Created On", description: "Description " },
-    { title: "Status", description: "Description " },
-    { title: "Admin Priority", description: "Description " },
-    { title: "Ticket No:", description: "Description " },
-    { title: "Category", description: "Description " },
-    { title: "Subcategory", description: "Description " },
-    { title: "Reference No:", description: "Description " },
+    { title: "Title :", description: ticketinfo.heading },
+    { title: "Created On :", description: ticketinfo.created_at  },
+    { title: "Status :", description: ticketinfo.issue_status },
+    { title: "Admin Priority :", description: ticketinfo.priority },
+    { title: "Ticket No:", description: ticketinfo.ticket_number },
+    { title: "Category", description: ticketinfo.category_type },
+    { title: "Subcategory", description: "" },
+    { title: "Reference No:", description: "" },
   ];
   const Creators = [
-    { title: "Created By:", description: "Description 1" },
-    { title: "Site:", description: "Description " },
-    { title: "Department:", description: "Description " },
-    { title: "Unit", description: "Description " },
+    { title: "Created By:", description: ticketinfo.created_by },
+    { title: "Site:", description: "" },
+    { title: "Department:", description: " " },
+    { title: "Unit", description: ticketinfo.unit_name },
   ];
   const Location = [
-    { title: "Room:", description: "Description " },
-    { title: "Floor:", description: "Description " },
-    { title: "Building", description: "Description " },
-    { title: "Region", description: "Description 1" },
-    { title: "Destrict", description: "Description " },
-    { title: "Zone", description: "Description " },
-    { title: "City", description: "Description " },
-    { title: "State", description: "Description " },
+    { title: "Room:", description: " " },
+    { title: "Floor:", description: " " },
+    { title: "Building", description: " " },
+    { title: "Region", description: " 1" },
+    { title: "Destrict", description: " " },
+    { title: "Zone", description: " " },
+    { title: "City", description: " " },
+    { title: "State", description: " " },
   ];
   const AdditionalInfo = [
-    { title: "Assigned To:", description: "Description " },
-    { title: "Proactive/Reactive:", description: "Description " },
-    { title: "Service Type:", description: "Description " },
-    { title: "Complaint Mode:", description: "Description 1" },
-    { title: "Responsible Person:", description: "Description " },
-    { title: "Correction:", description: "Description " },
-    { title: "Asset/Service:", description: "Description " },
-    { title: "Asset/Service Location", description: "Description " },
-  ]
-  const Attachments = [
-    { title: "Attachment 1", description: "Description " },
-    
-  ]
+    { title: "Assigned To:", description: " " },
+    { title: "Proactive/Reactive:", description: " " },
+    { title: "Service Type:", description: " " },
+    { title: "Complaint Mode:", description: " 1" },
+    { title: "Responsible Person:", description: " " },
+    { title: "Correction:", description: " " },
+    { title: "Asset/Service:", description: " " },
+    { title: "Asset/Service Location", description: " " },
+  ];
+  const Attachments = [{ title: "Attachment 1", description: " " }];
   return (
     <div className="">
-      <div className="sticky top-2">
-        <BackButton to={"/tickets"} />
-      </div>
       <div className="flex flex-col justify-around my-10 ">
         <div className="">
           <Detail details={ticketDetails} heading={"Ticket Details"} />
@@ -65,7 +72,7 @@ const TicketDetails = () => {
           <Detail details={AdditionalInfo} heading={"Additional Info"} />
         </div>
         <div className="border m-10" />
-        <Detail details={Attachments} heading={"Attachments"}/>
+        <Detail details={Attachments} heading={"Attachments"} />
         <div className="border m-10" />
       </div>
     </div>

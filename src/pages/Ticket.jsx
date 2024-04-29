@@ -16,7 +16,7 @@ const Ticket = () => {
       name: "Action",
       cell: (row) => (
         <div className="flex items-center gap-4">
-          <Link to={`/assets/asset-details/${row.id}`}>
+          <Link to={`/tickets/details/${row.id}`}>
             <BsEye size={15} />
           </Link>
           <Link to={`/edit/${row.id}`}>
@@ -39,7 +39,7 @@ const Ticket = () => {
     { name: "Unit", selector: (row) => row.unit_name, sortable: true },
     { name: "Department", selector: (row) => row.title, sortable: true },
     { name: "Admin Priority", selector: (row) => row.priority, sortable: true },
-    { name: "Created On", selector: (row) => row.title, sortable: true },
+    { name: "Created On", selector: (row) => row.created_at, sortable: true },
     { name: "Ticket Type", selector: (row) => row.issue_type, sortable: true },
     { name: "Refrence Number", selector: (row) => row.title, sortable: true },
     { name: "Assigned To", selector: (row) => row.title, sortable: true },
@@ -94,27 +94,7 @@ const Ticket = () => {
       sortable: true,
     },
   ];
-  const data = [
-    {
-      id: 1,
-      title: "Test1",
-      ticketNumber: "123",
-      action: <ImEye />,
-    },
-    {
-      id: 2,
-      title: "Test2",
-      ticketNumber: "1234",
-      action: <ImEye />,
-    },
-    {
-      id: 3,
-      title: "Test3",
-      ticketNumber: "5",
-      action: <ImEye />,
-    },
-  ];
-
+  
   //custom style
   const customStyle = {
     headRow: {
@@ -160,7 +140,7 @@ const Ticket = () => {
       {/* <section className="flex max-w-min overflow-x-auto mr-5 "> */}
       <Navbar />
       <div className=" w-full flex mx-5 flex-col">
-        <div className="flex m-5 justify-start sm:gap-5 sm:flex-row flex-col ">
+        <div className="flex m-5 justify-start sm:gap-5 sm:flex-row flex-col flex-shrink ">
           <div className="shadow-xl rounded-full border-4 border-green-400 w-52 px-6 flex flex-col items-center">
             <p className="font-semibold text-lg">Open Tickets</p>
             <p className="text-center font-semibold text-lg ">0</p>

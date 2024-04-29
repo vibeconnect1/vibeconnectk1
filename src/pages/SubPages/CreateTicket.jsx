@@ -1,17 +1,18 @@
 import Collapsible from "react-collapsible";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import CustomTrigger from "../../containers/CustomTrigger";
 import Selector from "../../containers/Selector";
 import { useNavigate } from "react-router-dom";
 import FileInput from "../../Buttons/FileInput";
+import { getItemInLocalStorage } from "../../utils/localStorage";
 
 const CreateTicket = () => {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState("")
   const [isOpen, setIsOpen] = useState(false);
   const [behalf, setBehalf] = useState("self");
   const [ticketType, setTicketType] = useState("");
-  //   const [selectedOption, setSelectedOption] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [selectedCustomerPriority, setSelectedCustomerPriority] = useState("");
@@ -50,6 +51,15 @@ const CreateTicket = () => {
     const fileList = Array.from(files);
     setAttachments(fileList);
   };
+
+  useEffect(()=>{
+    // const user = getItemInLocalStorage("Name")
+    const user =  localStorage.getItem("Name");
+    const token = localStorage.getItem("TOKEN");
+    console.log(token)
+    setUserName(user)
+    console.log(user)
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,7 +117,7 @@ const CreateTicket = () => {
         <div>
           {behalf === "self" ? (
             <Collapsible
-            readOnly
+              readOnly
               trigger={
                 <CustomTrigger isOpen={isOpen}>Requestor Details</CustomTrigger>
               }
@@ -116,7 +126,7 @@ const CreateTicket = () => {
               className="bg-gray-300 p-2 rounded-md font-bold "
             >
               <div className="grid grid-cols-3 bg-gray-300 p-2 rounded-md gap-5 pb-4">
-                <p>Name:</p>
+                <p>Name: {userName}</p>
                 <p>Contact No:</p>
                 <p>Site:</p>
                 <p>Department:</p>

@@ -166,7 +166,7 @@ const Suppliers = () => {
         <div className="flex flex-wrap justify-between items-center my-5 ">
           <input
             type="text"
-            placeholder="Search By Service name"
+            placeholder="Search By Company name"
             className="border-2 p-2 w-96 border-gray-300 rounded-lg"
             value={searchText}
             onChange={handleSearch}
@@ -196,7 +196,7 @@ const Suppliers = () => {
           </div>
         </div>
         <DataTable
-          selectableRows
+          
           columns={column}
           data={filteredData}
           customStyles={customStyle}

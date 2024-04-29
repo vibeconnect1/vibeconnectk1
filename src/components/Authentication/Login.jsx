@@ -23,6 +23,8 @@ const Login = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("TOKEN");
+    const user = localStorage.getItem("Name");
+    console.log(user)
     if (token) {
       navigate("/dashboard");
       toast.success("You are already logged in!");
@@ -35,7 +37,6 @@ const Login = () => {
       toast.error("Please fill in all fields.");
       return;
     }
-
     try {
       const response = await login({
         user: {
@@ -45,6 +46,11 @@ const Login = () => {
       });
       const token = response.data.user.api_key;
       setItemInLocalStorage("TOKEN", token);
+      const selectedSiteId = response.data.user.selected_site_id
+      const userName = response.data.user.firstname
+      localStorage.setItem("Name", userName)
+      console.log(userName)
+      console.log(selectedSiteId)
       toast.loading("Processing your data please wait...");
       navigate("/dashboard");
       toast.dismiss();

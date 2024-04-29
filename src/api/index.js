@@ -34,3 +34,9 @@ export const getComplaintsDetails = async (id) =>
       token: token,
     },
   });
+export const postComplaintsDetails = async (data) =>
+  axiosInstance.post(`/pms/complaints.json`, {
+    params: {
+      token: token,
+    },
+  }, data,);

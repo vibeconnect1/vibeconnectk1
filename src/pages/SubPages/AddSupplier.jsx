@@ -118,6 +118,148 @@ const AddSupplier = () => {
               />
             </div>
           </div>
+          <h2 className="border-b text-center text-xl my-5 border-black mb-6 font-semibold">
+            Address
+          </h2>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Address Line 1 :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Address"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Address Line 2 :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Address"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                City :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder=" Enter City"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                State :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Enter State"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Pincode :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Enter Pincode"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Enter Country :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="PAN"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+          </div>
+          <h2 className="border-b text-center text-xl my-5 border-black mb-6 font-semibold">
+            Bank Details
+          </h2>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Account Name :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Enter Account Name"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Account Number :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Enter Account Number"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                Bank & Branch Name :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder=" Enter Bank & Branch"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="font-medium">
+                IFSC Code :
+              </label>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="IFSC"
+                className="border p-1 px-4 border-gray-500 rounded-md"
+              />
+            </div>
+          </div>
+          <h2 className="border-b text-center text-xl my-5 border-black mb-6 font-semibold">
+            Attachments
+          </h2>
+          <input type="file" name="" id="" multiple />
+          <div className="flex gap-5 justify-center items-center my-4">
+          <button
+            type="submit"
+            className="bg-black text-white hover:bg-gray-700 font-semibold text-xl py-2 px-4 rounded"
+          >
+            Submit
+          </button>
+          </div>
         </div>
       </div>
     </section>

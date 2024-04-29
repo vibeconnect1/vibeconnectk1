@@ -18,7 +18,7 @@ const TicketDetails = () => {
 
   const ticketDetails = [
     { title: "Title :", description: ticketinfo.heading },
-    { title: "Created On :", description: ticketinfo.created_at  },
+    { title: "Created On :", description: ticketinfo.created_at },
     { title: "Status :", description: ticketinfo.issue_status },
     { title: "Admin Priority :", description: ticketinfo.priority },
     { title: "Ticket No:", description: ticketinfo.ticket_number },
@@ -36,7 +36,7 @@ const TicketDetails = () => {
     { title: "Room:", description: " " },
     { title: "Floor:", description: " " },
     { title: "Building", description: " " },
-    { title: "Region", description: " 1" },
+    { title: "Region", description: " " },
     { title: "Destrict", description: " " },
     { title: "Zone", description: " " },
     { title: "City", description: " " },
@@ -46,7 +46,7 @@ const TicketDetails = () => {
     { title: "Assigned To:", description: " " },
     { title: "Proactive/Reactive:", description: " " },
     { title: "Service Type:", description: " " },
-    { title: "Complaint Mode:", description: " 1" },
+    { title: "Complaint Mode:", description: " " },
     { title: "Responsible Person:", description: " " },
     { title: "Correction:", description: " " },
     { title: "Asset/Service:", description: " " },

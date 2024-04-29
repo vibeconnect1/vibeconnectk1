@@ -29,6 +29,7 @@ import Room from "./pages/SubPages/Room.jsx";
 import UserRole from "./pages/SubPages/UserRole.jsx";
 import { Toaster } from "react-hot-toast";
 import Ticket from "./pages/Ticket.jsx";
+
 import TicketDetails from "./pages/SubPages/details/Details.jsx";
 import Footer from "./components/Footer.jsx";
 import CreateTicket from "./pages/SubPages/CreateTicket.jsx";
@@ -59,7 +60,10 @@ import AddService from "./pages/SubPages/AddService.jsx";
 import ServiceDetails from "./pages/SubPages/details/ServiceDetails.jsx";
 import Suppliers from "./pages/Suppliers.jsx";
 import ProtectedRoute from "./routes/ProtectedRoutes.jsx";
-import AddSupplier from "./pages/SubPages/AddSupplier.jsx";
+import MyTickets from "./pages/MyTickets.jsx";
+import UserTicket from "./pages/SubPages/UserTecket.jsx";
+
+
 function App() {
   return (
     <>
@@ -69,14 +73,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to="/login" />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/setup" element={<Setup />} />
           <Route path="/setup/account" element={<Account />} />
@@ -98,9 +95,12 @@ function App() {
           <Route path="/setup/account/room" element={<Room />} />
           <Route path="/setup/User-role" element={<UserRole />} />
           {/* tickets */}
-          <Route path="/tickets" element={<ProtectedRoute><Ticket /></ProtectedRoute>} />
-          <Route path="/tickets/details/:id" element={<ProtectedRoute><TicketDetails /></ProtectedRoute>} />
-          <Route path="/tickets/create-ticket" element={<ProtectedRoute><CreateTicket /></ProtectedRoute>} />
+          <Route path="/tickets" element={<Ticket />} />
+          <Route path="/tickets/details/:id" element={<TicketDetails />} />
+          <Route path="/tickets/create-ticket" element={<CreateTicket />} />
+          <Route path="/mytickets" element={<MyTickets />} />
+          <Route path="/mytickets/usercreate" element= {<UserTicket/>} />
+          
           {/* business */}
           <Route path="/business" element={<Business />} />
           <Route path="/business/details/:id" element={<BusinessDetails />} />
@@ -184,22 +184,7 @@ function App() {
             element={<ServiceDetails />}
           />
           {/* Supplier */}
-          <Route
-            path="/suppliers"
-            element={
-              <ProtectedRoute>
-                <Suppliers />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/suppliers/add-supplier"
-            element={
-              <ProtectedRoute>
-                <AddSupplier />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/suppliers" element={<Suppliers />} />
         </Routes>
         <Footer />
       </Router>

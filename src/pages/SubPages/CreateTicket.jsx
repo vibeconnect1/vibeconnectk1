@@ -80,6 +80,9 @@ const CreateTicket = () => {
   };
   return (
     <section className="flex justify-center items-center h-screen my-28">
+      <div className="fixed left-0 top-0 h-full">
+        <Navbar />
+      </div>
       <form
         className="border border-gray-300 rounded-lg sm:w-[60rem] p-8"
         onSubmit={handleSubmit}
@@ -87,7 +90,7 @@ const CreateTicket = () => {
         <h2 className="text-center text-xl font-bold p-2 bg-black rounded-full text-white">
           Create Ticket
         </h2>
-        <ul className="flex sm:flex-row flex-col justify-around my-5 items-center">
+        {/* <ul className="flex sm:flex-row flex-col justify-around my-5 items-center">
           <li className="font-bold">On Behalf Of:</li>
           <li
             className={`hover:bg-black hover:text-white cursor-pointer rounded-full px-5 py-2 ${
@@ -113,7 +116,7 @@ const CreateTicket = () => {
           >
             FM User
           </li>
-        </ul>
+        </ul> */}
         <div>
           {behalf === "self" ? (
             <Collapsible
@@ -146,7 +149,7 @@ const CreateTicket = () => {
             </div>
           )}
         </div>
-        <div>
+        {/* <div>
           <ul className="flex sm:flex-row flex-col justify-around my-5 items-center">
             <li className="font-bold">Ticket Type:</li>
             <li
@@ -174,7 +177,7 @@ const CreateTicket = () => {
               Request
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="ml-5 grid sm:grid-cols-3 place-content-center w-full gap-4">
           <Selector
             heading={"Category"}
@@ -194,7 +197,7 @@ const CreateTicket = () => {
               handleOptionChange(e, setSelectedSubCategory)
             }
           />
-          <Selector
+          {/* <Selector
             heading={"Admin Priority"}
             subHeading={"Choose Admin Priority"}
             options={options.adminPriority}
@@ -202,13 +205,13 @@ const CreateTicket = () => {
             handleOptionChange={(e) =>
               handleOptionChange(e, setSelectedAdminPriority)
             }
-          />
+          /> */}
           <Selector
             heading={"Assigned To"}
             subHeading={"Assign To"}
             options={options.Catregory}
           />
-          <Selector
+          {/* <Selector
             heading={"Customer Priority"}
             subHeading={"Choose Priority"}
             options={options.priority}
@@ -216,8 +219,8 @@ const CreateTicket = () => {
             handleOptionChange={(e) =>
               handleOptionChange(e, setSelectedCustomerPriority)
             }
-          />
-          <div className="flex flex-col gap-1">
+          /> */}
+          {/* <div className="flex flex-col gap-1">
             <label htmlFor="" className="font-semibold">
               Reference Number:
             </label>
@@ -228,7 +231,7 @@ const CreateTicket = () => {
               placeholder="Enter Reference Number"
               className="border border-black rounded-md w-48 p-2"
             />
-          </div>
+          </div> */}
           <Selector
             heading={"Proactive/Reactive"}
             subHeading={"Choose Proactive/Reactive"}
